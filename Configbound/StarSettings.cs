@@ -14,7 +14,6 @@ namespace Configbound {
 		public StarSettings() {
 			string steamPath;
 
-
 			// Find Steam Install Path
 			// HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Valve\Steam\InstallPath
 			try {
