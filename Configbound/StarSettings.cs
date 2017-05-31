@@ -9,6 +9,7 @@ using Gameloop.Vdf;
 namespace Configbound {
 	public partial class StarSettings : Form {
 		string gameStoragePath = String.Empty;
+		string gameConfigPath = String.Empty;
 		StarConfig starConfig;
 
 		public StarSettings() {
@@ -72,22 +73,24 @@ namespace Configbound {
 			}
 			if (gameStoragePath == String.Empty) gameStoragePath = libraryPath + @"\common\Starbound\storage";
 
-			starConfig = new StarConfig(gameStoragePath + @"\starbound.config");
+			gameConfigPath = gameStoragePath + @"\starbound.config";
+
+			starConfig = new StarConfig(gameConfigPath);
 
 			InitializeComponent();
 		}
 
 		public void StarSettings_Load(object sender, EventArgs e) {
-			ReadConfig();
+			ApplyConfig();
 			lblMusicVolume.DataBindings.Add("Text", barMusicVolume, "Value");
 			lblSFXVolume.DataBindings.Add("Text", barSFXVolume, "Value");
 			btnSave.Enabled = true;
-			btnServerUsers.Enabled = true;
+			//btnServerUsers.Enabled = true;
 			//btnBannedIPs.Enabled = true;
 			//btnBannedUUIDs.Enabled = true;
 		}
 
-		private void ReadConfig() {
+		private void ApplyConfig() {
 			// Display
 			chkFullscreen.Checked = starConfig.Fullscreen;
 			chkBorderless.Checked = starConfig.Borderless;
@@ -161,28 +164,32 @@ namespace Configbound {
 				starConfig.ClearPlayerFiles = chkClearPlayerFiles.Checked;
 				starConfig.ClearUniverseFiles = chkClearUniverseFiles.Checked;
 
-				try {
-					File.Copy(gameStoragePath + @"\starbound.config", gameStoragePath + @"\starbound.config.bak", true);
-					starConfig.SaveConfig(gameStoragePath + @"\starbound.config");
-				} catch (Exception ex) {
-					MessageBox.Show("Save Failed!" + Environment.NewLine + ex.Message);
-				}
+				starConfig.Save();
 			}
 		}
 	}
 
 	class StarConfig {
 		dynamic _starConfig;
+		string _configPath;
 
-		public StarConfig(string configFile) {
-			string json = File.ReadAllText(configFile);
+		public StarConfig(string configPath) {
+			string json = File.ReadAllText(configPath);
 			_starConfig = JsonConvert.DeserializeObject(json);
+			_configPath = configPath;
 		}
-		public void SaveConfig(string configFile) {
-			string json = JsonConvert.SerializeObject(_starConfig, Formatting.Indented);
-			File.WriteAllText(configFile, json, System.Text.Encoding.UTF8);
+
+		public void Save() {
+			try {
+				File.Copy(_configPath, _configPath + ".bak", true);
+
+				string json = JsonConvert.SerializeObject(_starConfig, Formatting.Indented);
+				File.WriteAllText(_configPath, json, System.Text.Encoding.UTF8);
+			} catch (Exception ex) {
+				MessageBox.Show("Save Failed!" + Environment.NewLine + ex.Message);
+			}
 		}
-		
+
 		// Display
 		public bool Fullscreen {
 			get { return _starConfig.fullscreen; }
