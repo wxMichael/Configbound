@@ -29,6 +29,7 @@
 			this.chkBorderless = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label11 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.numWindowedHeight = new System.Windows.Forms.NumericUpDown();
 			this.numWindowedWidth = new System.Windows.Forms.NumericUpDown();
@@ -73,7 +74,6 @@
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.chkLimitTextureAtlasSize = new System.Windows.Forms.CheckBox();
 			this.tipStarSettings = new System.Windows.Forms.ToolTip(this.components);
-			this.label11 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numWindowedHeight)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numWindowedWidth)).BeginInit();
@@ -94,6 +94,7 @@
 			// 
 			// btnSave
 			// 
+			this.btnSave.Enabled = false;
 			this.btnSave.Location = new System.Drawing.Point(227, 372);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(80, 23);
@@ -151,6 +152,14 @@
 			this.groupBox1.TabIndex = 7;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Display";
+			// 
+			// label11
+			// 
+			this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label11.Location = new System.Drawing.Point(41, 69);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(150, 2);
+			this.label11.TabIndex = 13;
 			// 
 			// label6
 			// 
@@ -707,14 +716,6 @@
 			this.tipStarSettings.InitialDelay = 800;
 			this.tipStarSettings.IsBalloon = true;
 			this.tipStarSettings.ReshowDelay = 100;
-			// 
-			// label11
-			// 
-			this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label11.Location = new System.Drawing.Point(41, 69);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(150, 2);
-			this.label11.TabIndex = 13;
 			// 
 			// StarSettings
 			// 

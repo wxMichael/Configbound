@@ -22,8 +22,8 @@ namespace Configbound {
 						steamPath = Reg32Steam.GetValue("InstallPath").ToString();
 					}
 				}
-			} catch (Exception e) {
-				throw new Exception("Failed to open registry. Try running the application as Admin." + Environment.NewLine + e.Message);
+			} catch (Exception ex) {
+				throw new Exception("Failed to open registry. Try running the application as Admin." + Environment.NewLine + ex.Message);
 			}
 
 			// Find Steam Library Folders
@@ -44,8 +44,8 @@ namespace Configbound {
 						}
 					}
 				}
-			} catch (Exception e) {
-				throw new Exception("Failed to parse libraryfolders.vdf." + Environment.NewLine + e.Message);
+			} catch (Exception ex) {
+				throw new Exception("Failed to parse libraryfolders.vdf." + Environment.NewLine + ex.Message);
 			}
 
 
@@ -81,6 +81,10 @@ namespace Configbound {
 			ReadConfig();
 			lblMusicVolume.DataBindings.Add("Text", barMusicVolume, "Value");
 			lblSFXVolume.DataBindings.Add("Text", barSFXVolume, "Value");
+			btnSave.Enabled = true;
+			btnServerUsers.Enabled = true;
+			//btnBannedIPs.Enabled = true;
+			//btnBannedUUIDs.Enabled = true;
 		}
 
 		private void ReadConfig() {
@@ -157,7 +161,12 @@ namespace Configbound {
 				starConfig.ClearPlayerFiles = chkClearPlayerFiles.Checked;
 				starConfig.ClearUniverseFiles = chkClearUniverseFiles.Checked;
 
-				starConfig.SaveConfig(gameStoragePath + @"\starbound.config");
+				try {
+					File.Copy(gameStoragePath + @"\starbound.config", gameStoragePath + @"\starbound.config.bak", true);
+					starConfig.SaveConfig(gameStoragePath + @"\starbound.config");
+				} catch (Exception ex) {
+					MessageBox.Show("Save Failed!" + Environment.NewLine + ex.Message);
+				}
 			}
 		}
 	}
