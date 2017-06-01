@@ -404,6 +404,7 @@
 			this.btnServerUsers.TabIndex = 29;
 			this.btnServerUsers.Text = "Server Users";
 			this.btnServerUsers.UseVisualStyleBackColor = true;
+			this.btnServerUsers.Click += new System.EventHandler(this.btnServerUsers_Click);
 			// 
 			// btnBannedIPs
 			// 

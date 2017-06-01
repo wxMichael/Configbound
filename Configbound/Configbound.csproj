@@ -82,6 +82,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServerUserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerUserEdit.Designer.cs">
+      <DependentUpon>ServerUserEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServerUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerUsers.Designer.cs">
+      <DependentUpon>ServerUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="StarSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +102,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ServerUserEdit.resx">
+      <DependentUpon>ServerUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerUsers.resx">
+      <DependentUpon>ServerUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StarSettings.resx">
       <DependentUpon>StarSettings.cs</DependentUpon>
     </EmbeddedResource>
