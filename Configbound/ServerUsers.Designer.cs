@@ -1,5 +1,5 @@
 ﻿namespace Configbound {
-	partial class ServerUsers {
+	partial class ServerUsersForm {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -43,12 +43,14 @@
             this.colAdmin});
 			this.lstServerUsers.FullRowSelect = true;
 			this.lstServerUsers.GridLines = true;
+			this.lstServerUsers.HideSelection = false;
 			this.lstServerUsers.Location = new System.Drawing.Point(12, 12);
 			this.lstServerUsers.Name = "lstServerUsers";
 			this.lstServerUsers.Size = new System.Drawing.Size(289, 195);
 			this.lstServerUsers.TabIndex = 0;
 			this.lstServerUsers.UseCompatibleStateImageBehavior = false;
 			this.lstServerUsers.View = System.Windows.Forms.View.Details;
+			this.lstServerUsers.SelectedIndexChanged += new System.EventHandler(this.lstServerUsers_SelectedIndexChanged);
 			// 
 			// colUsername
 			// 
@@ -86,14 +88,14 @@
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(307, 12);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.Size = new System.Drawing.Size(88, 195);
-			this.flowLayoutPanel1.TabIndex = 2;
+			this.flowLayoutPanel1.TabIndex = 0;
 			// 
 			// btnEdit
 			// 
 			this.btnEdit.Location = new System.Drawing.Point(3, 32);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(82, 23);
-			this.btnEdit.TabIndex = 3;
+			this.btnEdit.TabIndex = 2;
 			this.btnEdit.Text = "Edit";
 			this.btnEdit.UseVisualStyleBackColor = true;
 			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -119,16 +121,17 @@
 			this.btnRemove.UseVisualStyleBackColor = true;
 			this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
 			// 
-			// ServerUsers
+			// ServerUsersForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(407, 218);
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.Controls.Add(this.lstServerUsers);
-			this.Name = "ServerUsers";
+			this.Name = "ServerUsersForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "ServerUsers";
+			this.Text = "Edit Server Users";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServerUsersForm_FormClosing);
 			this.Load += new System.EventHandler(this.ServerUsers_Load);
 			this.flowLayoutPanel1.ResumeLayout(false);
 			this.flowLayoutPanel1.PerformLayout();

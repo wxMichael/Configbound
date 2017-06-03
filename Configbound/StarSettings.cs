@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Gameloop.Vdf;
 
 // TODO:
@@ -12,12 +13,12 @@ using Gameloop.Vdf;
 
 
 namespace Configbound {
-	public partial class StarSettings : Form {
+	public partial class StarSettingsForm : Form {
 		string gameStoragePath = String.Empty;
 		string gameConfigPath = String.Empty;
 		//StarConfig starConfig;
 
-		public StarSettings() {
+		public StarSettingsForm() {
 			string steamPath;
 
 			// Find Steam Install Path
@@ -96,7 +97,7 @@ namespace Configbound {
 		}
 
 		private void ApplyConfig() {
-			//foreach (KeyValuePair<string, Newtonsoft.Json.Linq.JToken> user in starConfig.ServerUsers) {
+			//foreach (KeyValuePair<string, JToken> user in starConfig.ServerUsers) {
 			//	//MessageBox.Show(user.Key + "\n\n" + user.Value);
 			//	MessageBox.Show(user.Value.ToString());
 			//}
@@ -178,8 +179,8 @@ namespace Configbound {
 		}
 
 		private void btnServerUsers_Click(object sender, EventArgs e) {
-			ServerUsers frmServerUsers = new ServerUsers();
-			frmServerUsers.ShowDialog();
+			ServerUsersForm frmServerUsers = new ServerUsersForm();
+			frmServerUsers.ShowDialog(this);
 		}
 	}
 
@@ -225,11 +226,11 @@ namespace Configbound {
 			get { return _starConfig.maximized; }
 			set { _starConfig.maximized = value; }
 		}
-		public static Newtonsoft.Json.Linq.JArray FullscreenResolution {
+		public static JArray FullscreenResolution {
 			get { return _starConfig.fullscreenResolution; }
 			set { _starConfig.fullscreenResolution = value; }
 		}
-		public static Newtonsoft.Json.Linq.JArray WindowedResolution {
+		public static JArray WindowedResolution {
 			get { return _starConfig.windowedResolution; }
 			set { _starConfig.windowedResolution = value; }
 		}
@@ -299,10 +300,17 @@ namespace Configbound {
 			get { return _starConfig.anonymousConnectionsAreAdmin; }
 			set { _starConfig.anonymousConnectionsAreAdmin = value; }
 		}
-		public static Newtonsoft.Json.Linq.JObject ServerUsers {
+		public static JObject ServerUsers {
 			get { return _starConfig.serverUsers; }
 			set { _starConfig.serverUsers = value; }
 		}
+		//public static List<JProperty> ServerUsers {
+		//	get {
+		//		IEnumerable<JProperty> properties = ((JObject)_starConfig.serverUsers).Properties();
+		//		return new List<JProperty>(properties);
+		//	}
+		//	set { ((JObject)_starConfig.serverUsers). = value; }
+		//}
 
 		//public static object bannedIPs { get; set; }
 		//public static object bannedUuids { get; set; }

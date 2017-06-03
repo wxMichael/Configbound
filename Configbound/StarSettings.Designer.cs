@@ -1,5 +1,5 @@
 ﻿namespace Configbound {
-	partial class StarSettings {
+	partial class StarSettingsForm {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -98,7 +98,7 @@
 			this.btnSave.Location = new System.Drawing.Point(227, 372);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(80, 23);
-			this.btnSave.TabIndex = 20;
+			this.btnSave.TabIndex = 29;
 			this.btnSave.Text = "Save Config";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -149,7 +149,7 @@
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(232, 126);
-			this.groupBox1.TabIndex = 7;
+			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Display";
 			// 
@@ -159,7 +159,7 @@
 			this.label11.Location = new System.Drawing.Point(41, 69);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(150, 2);
-			this.label11.TabIndex = 13;
+			this.label11.TabIndex = 0;
 			// 
 			// label6
 			// 
@@ -167,7 +167,7 @@
 			this.label6.Location = new System.Drawing.Point(6, 83);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(69, 13);
-			this.label6.TabIndex = 12;
+			this.label6.TabIndex = 0;
 			this.label6.Text = "Window Size";
 			// 
 			// numWindowedHeight
@@ -190,7 +190,7 @@
             0});
 			this.numWindowedHeight.Name = "numWindowedHeight";
 			this.numWindowedHeight.Size = new System.Drawing.Size(56, 20);
-			this.numWindowedHeight.TabIndex = 10;
+			this.numWindowedHeight.TabIndex = 7;
 			this.numWindowedHeight.Value = new decimal(new int[] {
             1080,
             0,
@@ -217,7 +217,7 @@
             0});
 			this.numWindowedWidth.Name = "numWindowedWidth";
 			this.numWindowedWidth.Size = new System.Drawing.Size(56, 20);
-			this.numWindowedWidth.TabIndex = 9;
+			this.numWindowedWidth.TabIndex = 6;
 			this.numWindowedWidth.Value = new decimal(new int[] {
             1920,
             0,
@@ -239,7 +239,7 @@
 			this.chkMaximized.Location = new System.Drawing.Point(6, 101);
 			this.chkMaximized.Name = "chkMaximized";
 			this.chkMaximized.Size = new System.Drawing.Size(75, 17);
-			this.chkMaximized.TabIndex = 7;
+			this.chkMaximized.TabIndex = 8;
 			this.chkMaximized.Text = "Maximized";
 			this.chkMaximized.UseVisualStyleBackColor = true;
 			// 
@@ -313,7 +313,7 @@
 			this.chkAllowAssetsMismatch.Location = new System.Drawing.Point(3, 49);
 			this.chkAllowAssetsMismatch.Name = "chkAllowAssetsMismatch";
 			this.chkAllowAssetsMismatch.Size = new System.Drawing.Size(133, 17);
-			this.chkAllowAssetsMismatch.TabIndex = 21;
+			this.chkAllowAssetsMismatch.TabIndex = 20;
 			this.chkAllowAssetsMismatch.Text = "Allow Assets Mismatch";
 			this.chkAllowAssetsMismatch.UseVisualStyleBackColor = true;
 			// 
@@ -323,7 +323,7 @@
 			this.chkClearPlayerFiles.Location = new System.Drawing.Point(6, 19);
 			this.chkClearPlayerFiles.Name = "chkClearPlayerFiles";
 			this.chkClearPlayerFiles.Size = new System.Drawing.Size(106, 17);
-			this.chkClearPlayerFiles.TabIndex = 22;
+			this.chkClearPlayerFiles.TabIndex = 12;
 			this.chkClearPlayerFiles.Text = "Clear Player Files";
 			this.tipStarSettings.SetToolTip(this.chkClearPlayerFiles, "WARNING: Do not forget to turn this back off before playing!");
 			this.chkClearPlayerFiles.UseVisualStyleBackColor = true;
@@ -334,7 +334,7 @@
 			this.chkClearUniverseFiles.Location = new System.Drawing.Point(6, 42);
 			this.chkClearUniverseFiles.Name = "chkClearUniverseFiles";
 			this.chkClearUniverseFiles.Size = new System.Drawing.Size(119, 17);
-			this.chkClearUniverseFiles.TabIndex = 23;
+			this.chkClearUniverseFiles.TabIndex = 13;
 			this.chkClearUniverseFiles.Text = "Clear Universe Files";
 			this.tipStarSettings.SetToolTip(this.chkClearUniverseFiles, "WARNING: Do not forget to turn this back off before playing!");
 			this.chkClearUniverseFiles.UseVisualStyleBackColor = true;
@@ -347,7 +347,7 @@
 			this.groupBox2.Location = new System.Drawing.Point(12, 303);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(232, 63);
-			this.groupBox2.TabIndex = 24;
+			this.groupBox2.TabIndex = 0;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Wipe Game Data";
 			// 
@@ -358,7 +358,7 @@
 			this.label10.Location = new System.Drawing.Point(108, 13);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(124, 44);
-			this.label10.TabIndex = 24;
+			this.label10.TabIndex = 0;
 			this.label10.Text = "-- WARNING --\r\nThese take effect on EVERY game start!";
 			this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
@@ -377,7 +377,7 @@
 			this.groupBox3.Location = new System.Drawing.Point(250, 12);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(272, 354);
-			this.groupBox3.TabIndex = 25;
+			this.groupBox3.TabIndex = 0;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Multiplayer";
 			// 
@@ -391,7 +391,7 @@
 			this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 309);
 			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
 			this.flowLayoutPanel2.Size = new System.Drawing.Size(257, 29);
-			this.flowLayoutPanel2.TabIndex = 30;
+			this.flowLayoutPanel2.TabIndex = 0;
 			// 
 			// btnServerUsers
 			// 
@@ -401,7 +401,7 @@
 			this.btnServerUsers.Location = new System.Drawing.Point(3, 3);
 			this.btnServerUsers.Name = "btnServerUsers";
 			this.btnServerUsers.Size = new System.Drawing.Size(78, 23);
-			this.btnServerUsers.TabIndex = 29;
+			this.btnServerUsers.TabIndex = 26;
 			this.btnServerUsers.Text = "Server Users";
 			this.btnServerUsers.UseVisualStyleBackColor = true;
 			this.btnServerUsers.Click += new System.EventHandler(this.btnServerUsers_Click);
@@ -444,7 +444,7 @@
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 117);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.Size = new System.Drawing.Size(224, 186);
-			this.flowLayoutPanel1.TabIndex = 26;
+			this.flowLayoutPanel1.TabIndex = 0;
 			// 
 			// chkClientIPJoinable
 			// 
@@ -452,7 +452,7 @@
 			this.chkClientIPJoinable.Location = new System.Drawing.Point(3, 3);
 			this.chkClientIPJoinable.Name = "chkClientIPJoinable";
 			this.chkClientIPJoinable.Size = new System.Drawing.Size(107, 17);
-			this.chkClientIPJoinable.TabIndex = 27;
+			this.chkClientIPJoinable.TabIndex = 18;
 			this.chkClientIPJoinable.Text = "Client IP-Joinable";
 			this.chkClientIPJoinable.UseVisualStyleBackColor = true;
 			// 
@@ -462,7 +462,7 @@
 			this.chkClientP2PJoinable.Location = new System.Drawing.Point(3, 26);
 			this.chkClientP2PJoinable.Name = "chkClientP2PJoinable";
 			this.chkClientP2PJoinable.Size = new System.Drawing.Size(117, 17);
-			this.chkClientP2PJoinable.TabIndex = 28;
+			this.chkClientP2PJoinable.TabIndex = 19;
 			this.chkClientP2PJoinable.Text = "Client P2P-Joinable";
 			this.chkClientP2PJoinable.UseVisualStyleBackColor = true;
 			// 
@@ -472,7 +472,7 @@
 			this.chkCheckAssetsDigest.Location = new System.Drawing.Point(3, 72);
 			this.chkCheckAssetsDigest.Name = "chkCheckAssetsDigest";
 			this.chkCheckAssetsDigest.Size = new System.Drawing.Size(124, 17);
-			this.chkCheckAssetsDigest.TabIndex = 26;
+			this.chkCheckAssetsDigest.TabIndex = 21;
 			this.chkCheckAssetsDigest.Text = "Check Assets Digest";
 			this.tipStarSettings.SetToolTip(this.chkCheckAssetsDigest, "Forces players to have matching assets pack.");
 			this.chkCheckAssetsDigest.UseVisualStyleBackColor = true;
@@ -483,7 +483,7 @@
 			this.chkAllowAdminCommands.Location = new System.Drawing.Point(3, 95);
 			this.chkAllowAdminCommands.Name = "chkAllowAdminCommands";
 			this.chkAllowAdminCommands.Size = new System.Drawing.Size(138, 17);
-			this.chkAllowAdminCommands.TabIndex = 26;
+			this.chkAllowAdminCommands.TabIndex = 22;
 			this.chkAllowAdminCommands.Text = "Allow Admin Commands";
 			this.chkAllowAdminCommands.UseVisualStyleBackColor = true;
 			// 
@@ -493,7 +493,7 @@
 			this.chkAllowAdminCommandsFromAnyone.Location = new System.Drawing.Point(3, 118);
 			this.chkAllowAdminCommandsFromAnyone.Name = "chkAllowAdminCommandsFromAnyone";
 			this.chkAllowAdminCommandsFromAnyone.Size = new System.Drawing.Size(200, 17);
-			this.chkAllowAdminCommandsFromAnyone.TabIndex = 29;
+			this.chkAllowAdminCommandsFromAnyone.TabIndex = 23;
 			this.chkAllowAdminCommandsFromAnyone.Text = "Allow Admin Commands from Anyone";
 			this.tipStarSettings.SetToolTip(this.chkAllowAdminCommandsFromAnyone, "Allows anyone logged into the server to have access to the administrator console." +
         "");
@@ -505,7 +505,7 @@
 			this.chkAllowAnonymousConnections.Location = new System.Drawing.Point(3, 141);
 			this.chkAllowAnonymousConnections.Name = "chkAllowAnonymousConnections";
 			this.chkAllowAnonymousConnections.Size = new System.Drawing.Size(171, 17);
-			this.chkAllowAnonymousConnections.TabIndex = 27;
+			this.chkAllowAnonymousConnections.TabIndex = 24;
 			this.chkAllowAnonymousConnections.Text = "Allow Anonymous Connections";
 			this.tipStarSettings.SetToolTip(this.chkAllowAnonymousConnections, "Allows users who are not identified in serverUsers to log in.");
 			this.chkAllowAnonymousConnections.UseVisualStyleBackColor = true;
@@ -516,7 +516,7 @@
 			this.chkAnonymousConnectionsAreAdmin.Location = new System.Drawing.Point(3, 164);
 			this.chkAnonymousConnectionsAreAdmin.Name = "chkAnonymousConnectionsAreAdmin";
 			this.chkAnonymousConnectionsAreAdmin.Size = new System.Drawing.Size(193, 17);
-			this.chkAnonymousConnectionsAreAdmin.TabIndex = 30;
+			this.chkAnonymousConnectionsAreAdmin.TabIndex = 25;
 			this.chkAnonymousConnectionsAreAdmin.Text = "Anonymous Connections are Admin";
 			this.tipStarSettings.SetToolTip(this.chkAnonymousConnectionsAreAdmin, "Allows users who are not identified in serverUsers to be admin.");
 			this.chkAnonymousConnectionsAreAdmin.UseVisualStyleBackColor = true;
@@ -536,7 +536,7 @@
             0});
 			this.numGameServerPort.Name = "numGameServerPort";
 			this.numGameServerPort.Size = new System.Drawing.Size(82, 20);
-			this.numGameServerPort.TabIndex = 28;
+			this.numGameServerPort.TabIndex = 15;
 			this.tipStarSettings.SetToolTip(this.numGameServerPort, "Default: 21025");
 			this.numGameServerPort.Value = new decimal(new int[] {
             8000,
@@ -550,7 +550,7 @@
 			this.label7.Location = new System.Drawing.Point(6, 41);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(60, 13);
-			this.label7.TabIndex = 29;
+			this.label7.TabIndex = 0;
 			this.label7.Text = "Server Port";
 			// 
 			// txtServerName
@@ -558,7 +558,7 @@
 			this.txtServerName.Location = new System.Drawing.Point(91, 13);
 			this.txtServerName.Name = "txtServerName";
 			this.txtServerName.Size = new System.Drawing.Size(172, 20);
-			this.txtServerName.TabIndex = 1;
+			this.txtServerName.TabIndex = 14;
 			// 
 			// label2
 			// 
@@ -574,7 +574,7 @@
 			this.numMaxPlayers.Location = new System.Drawing.Point(91, 65);
 			this.numMaxPlayers.Name = "numMaxPlayers";
 			this.numMaxPlayers.Size = new System.Drawing.Size(63, 20);
-			this.numMaxPlayers.TabIndex = 24;
+			this.numMaxPlayers.TabIndex = 16;
 			this.tipStarSettings.SetToolTip(this.numMaxPlayers, "Default: 8");
 			this.numMaxPlayers.Value = new decimal(new int[] {
             1,
@@ -588,7 +588,7 @@
 			this.label4.Location = new System.Drawing.Point(6, 93);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(80, 13);
-			this.label4.TabIndex = 23;
+			this.label4.TabIndex = 0;
 			this.label4.Text = "Max Team Size";
 			// 
 			// label3
@@ -597,7 +597,7 @@
 			this.label3.Location = new System.Drawing.Point(6, 67);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(64, 13);
-			this.label3.TabIndex = 22;
+			this.label3.TabIndex = 0;
 			this.label3.Text = "Max Players";
 			// 
 			// numMaxTeamSize
@@ -605,7 +605,7 @@
 			this.numMaxTeamSize.Location = new System.Drawing.Point(91, 91);
 			this.numMaxTeamSize.Name = "numMaxTeamSize";
 			this.numMaxTeamSize.Size = new System.Drawing.Size(63, 20);
-			this.numMaxTeamSize.TabIndex = 25;
+			this.numMaxTeamSize.TabIndex = 17;
 			this.tipStarSettings.SetToolTip(this.numMaxTeamSize, "Default: 4");
 			this.numMaxTeamSize.Value = new decimal(new int[] {
             1,
@@ -624,7 +624,7 @@
 			this.groupBox4.Location = new System.Drawing.Point(12, 144);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.Size = new System.Drawing.Size(232, 105);
-			this.groupBox4.TabIndex = 26;
+			this.groupBox4.TabIndex = 0;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Audio";
 			// 
@@ -634,7 +634,7 @@
 			this.lblSFXVolume.Location = new System.Drawing.Point(195, 58);
 			this.lblSFXVolume.Name = "lblSFXVolume";
 			this.lblSFXVolume.Size = new System.Drawing.Size(25, 13);
-			this.lblSFXVolume.TabIndex = 28;
+			this.lblSFXVolume.TabIndex = 0;
 			this.lblSFXVolume.Text = "100";
 			// 
 			// label9
@@ -652,7 +652,7 @@
 			this.lblMusicVolume.Location = new System.Drawing.Point(195, 16);
 			this.lblMusicVolume.Name = "lblMusicVolume";
 			this.lblMusicVolume.Size = new System.Drawing.Size(25, 13);
-			this.lblMusicVolume.TabIndex = 27;
+			this.lblMusicVolume.TabIndex = 0;
 			this.lblMusicVolume.Text = "100";
 			// 
 			// label8
@@ -672,7 +672,7 @@
 			this.barSFXVolume.Name = "barSFXVolume";
 			this.barSFXVolume.Size = new System.Drawing.Size(104, 45);
 			this.barSFXVolume.SmallChange = 5;
-			this.barSFXVolume.TabIndex = 28;
+			this.barSFXVolume.TabIndex = 10;
 			this.barSFXVolume.TickStyle = System.Windows.Forms.TickStyle.None;
 			this.barSFXVolume.Value = 100;
 			// 
@@ -684,7 +684,7 @@
 			this.barMusicVolume.Name = "barMusicVolume";
 			this.barMusicVolume.Size = new System.Drawing.Size(104, 45);
 			this.barMusicVolume.SmallChange = 5;
-			this.barMusicVolume.TabIndex = 27;
+			this.barMusicVolume.TabIndex = 9;
 			this.barMusicVolume.TickStyle = System.Windows.Forms.TickStyle.None;
 			this.barMusicVolume.Value = 100;
 			// 
@@ -694,7 +694,7 @@
 			this.groupBox5.Location = new System.Drawing.Point(12, 255);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Size = new System.Drawing.Size(232, 42);
-			this.groupBox5.TabIndex = 27;
+			this.groupBox5.TabIndex = 0;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Performance";
 			// 
@@ -704,7 +704,7 @@
 			this.chkLimitTextureAtlasSize.Location = new System.Drawing.Point(6, 19);
 			this.chkLimitTextureAtlasSize.Name = "chkLimitTextureAtlasSize";
 			this.chkLimitTextureAtlasSize.Size = new System.Drawing.Size(135, 17);
-			this.chkLimitTextureAtlasSize.TabIndex = 0;
+			this.chkLimitTextureAtlasSize.TabIndex = 11;
 			this.chkLimitTextureAtlasSize.Text = "Limit Texture Atlas Size";
 			this.tipStarSettings.SetToolTip(this.chkLimitTextureAtlasSize, "Starbound v1.2.1: Add “limitTextureAtlasSize” option in starbound.config to manua" +
         "lly limit texture atlas sizes. Should only necessary for video cards significant" +

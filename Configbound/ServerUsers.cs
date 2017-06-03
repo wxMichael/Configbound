@@ -2,80 +2,104 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Configbound {
-	public partial class ServerUsers : Form {
+	public partial class ServerUsersForm : Form {
+		public static ServerUser SelectedUser { get; set; }
 		List<ServerUser> serverUsers = new List<ServerUser>();
 
-		public ServerUsers() {
+		public ServerUsersForm() {
 			InitializeComponent();
 		}
 
-		private void ServerUsers_Load(object sender, EventArgs e) {
-			foreach (KeyValuePair<string, Newtonsoft.Json.Linq.JToken> user in StarConfig.ServerUsers) {
-				ServerUser su = new ServerUser(user.Key, user.Value.Value<string>("password"), user.Value.Value<bool>("admin"));
-				serverUsers.Add(su);
-
-				ListViewItem li = new ListViewItem(su.Username);
-				li.SubItems.Add(su.Password);
-				li.SubItems.Add(su.IsAdmin ? "✓" : "");
-				lstServerUsers.Items.Add(li);
-			}
-		}
+		private void ServerUsers_Load(object sender, EventArgs e) { PopulateList(); }
 
 		private void btnAdd_Click(object sender, EventArgs e) {
-			ServerUserEdit frmServerUserEdit = new ServerUserEdit();
-			frmServerUserEdit.ShowDialog();
+			ServerUserEditForm frmServerUserEdit = new ServerUserEditForm();
+			frmServerUserEdit.ShowDialog(this);
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e) {
-			if (UserIsSelected) {
-				ServerUserEdit frmServerUserEdit = new ServerUserEdit();
-				frmServerUserEdit.ShowDialog();
+			if (SelectedUser != null) {
+				ServerUserEditForm frmServerUserEdit = new ServerUserEditForm();
+				frmServerUserEdit.ShowDialog(this);
 			}
 		}
 
 		private void btnAdmin_Click(object sender, EventArgs e) {
-			if (UserIsSelected) {
-
+			if (SelectedUser != null) {
+				SelectedUser.IsAdmin = !SelectedUser.IsAdmin;
+				ListViewItem.ListViewSubItem userAdmin = lstServerUsers.SelectedItems[0].SubItems[colAdmin.Index];
+				userAdmin.Text = SelectedUser.IsAdmin ? "✓" : "";
 			}
 		}
 
 		private void btnRemove_Click(object sender, EventArgs e) {
-			if (UserIsSelected) {
+			if (SelectedUser != null) {
+				serverUsers.Remove(SelectedUser);
+				lstServerUsers.Items.Remove(lstServerUsers.SelectedItems[0]);
+			}
+		}
+
+		private void lstServerUsers_SelectedIndexChanged(object sender, EventArgs e) {
+			if (serverUsers.Count > 0 && lstServerUsers.SelectedIndices.Count == 1) {
 				ListViewItem selectedUser = lstServerUsers.SelectedItems[0];
-				IEnumerable<ServerUser> results = (from user in serverUsers
-												   where user.Username == selectedUser.Text
-												   select user);
-				if (results.Count() == 0) {
-					throw new Exception("No results for " + selectedUser.Text);
-				} else if (results.Count() > 1) {
-					throw new Exception("Unimplemented! (Safe to continue)\n More than one serverUsers record for " + selectedUser.Text);
-				} else {
-					ServerUser su = results.First();
-					serverUsers.Remove(su);
-					lstServerUsers.Items.Remove(lstServerUsers.SelectedItems[0]);
+				ServerUser srv = serverUsers.Find(x => x.Username == selectedUser.Text);
+				SelectedUser = srv ?? throw new Exception("No results for " + selectedUser.Text);
+			} else {
+				SelectedUser = null;
+			}
+		}
+
+		private void ServerUsersForm_FormClosing(object sender, FormClosingEventArgs e) {
+
+		}
+
+		public void ApplySelectedUserChanges() {
+			ListViewItem.ListViewSubItem userName = lstServerUsers.SelectedItems[0].SubItems[colUsername.Index];
+			ListViewItem.ListViewSubItem userPassword = lstServerUsers.SelectedItems[0].SubItems[colPassword.Index];
+			ListViewItem.ListViewSubItem userAdmin = lstServerUsers.SelectedItems[0].SubItems[colAdmin.Index];
+			userName.Text = SelectedUser.Username;
+			userPassword.Text = SelectedUser.Password;
+			userAdmin.Text = SelectedUser.IsAdmin ? "✓" : "";
+		}
+
+		private void PopulateList() {
+			foreach (JProperty user in StarConfig.ServerUsers.Properties()) {
+				ServerUser su = new ServerUser(user);
+				if (serverUsers.Find(x => x.Username == su.Username) == null) {
+					serverUsers.Add(su);
+
+					ListViewItem li = new ListViewItem(su.Username);
+					li.SubItems.Add(su.Password);
+					li.SubItems.Add(su.IsAdmin ? "✓" : "");
+					lstServerUsers.Items.Add(li);
 				}
 			}
 		}
 
-		private bool UserIsSelected {
-			get { return serverUsers.Count > 0 && lstServerUsers.SelectedIndices.Count == 1; }
-		}
+		public class ServerUser {
+			JProperty _jprop;
 
-		class ServerUser {
-			public ServerUser(string username, string password, bool admin) {
-				Username = username;
-				Password = password;
-				IsAdmin = admin;
+			public ServerUser(JProperty user) {
+				_jprop = user;
 			}
 
-			public string Username { get; set; }
-			public string Password { get; set; }
-			public bool IsAdmin { get; set; }
+			public string Username {
+				get { return _jprop.Name; }
+				set { _jprop = new JProperty(value, _jprop.Value); }
+			}
 
-			public override string ToString() {
-				return Username + " : " + Password + " : " + IsAdmin;
+			public string Password {
+				get { return _jprop.Value.Value<string>("password"); }
+				set { ((dynamic)_jprop.Value).password = value; }
+			}
+
+			public bool IsAdmin {
+				get { return _jprop.Value.Value<bool>("admin"); }
+				set { ((dynamic)_jprop.Value).admin = value; }
 			}
 		}
 	}
