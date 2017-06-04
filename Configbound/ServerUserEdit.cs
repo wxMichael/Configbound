@@ -58,10 +58,10 @@ namespace Configbound {
 					if (nameChanged) ChangeUsername(ServerUsersForm.SelectedUser.Value.Key, nameTrimmed);
 				} else {
 					JObject userJson = JObject.Parse(String.Format(@"
-					{
+					{{
 						""admin"" : {0},
 						""password"" : ""{1}""
-					}", chkAdmin.Enabled.ToString(), passTrimmed));
+					}}", chkAdmin.Enabled.ToString().ToLower(), passTrimmed));
 					Globals.StarboundSettings.serverUsers.additionalData.Add(nameTrimmed, userJson);
 				}
 				((ServerUsersForm)this.Owner).PopulateList();
