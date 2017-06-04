@@ -69,6 +69,7 @@
 			// 
 			// btnAdd
 			// 
+			this.btnAdd.Enabled = false;
 			this.btnAdd.Location = new System.Drawing.Point(3, 3);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(82, 23);
@@ -92,6 +93,7 @@
 			// 
 			// btnEdit
 			// 
+			this.btnEdit.Enabled = false;
 			this.btnEdit.Location = new System.Drawing.Point(3, 32);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(82, 23);
@@ -103,6 +105,7 @@
 			// btnAdmin
 			// 
 			this.btnAdmin.AutoSize = true;
+			this.btnAdmin.Enabled = false;
 			this.btnAdmin.Location = new System.Drawing.Point(3, 61);
 			this.btnAdmin.Name = "btnAdmin";
 			this.btnAdmin.Size = new System.Drawing.Size(82, 23);
@@ -113,6 +116,7 @@
 			// 
 			// btnRemove
 			// 
+			this.btnRemove.Enabled = false;
 			this.btnRemove.Location = new System.Drawing.Point(3, 90);
 			this.btnRemove.Name = "btnRemove";
 			this.btnRemove.Size = new System.Drawing.Size(82, 23);
@@ -128,10 +132,13 @@
 			this.ClientSize = new System.Drawing.Size(407, 218);
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.Controls.Add(this.lstServerUsers);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "ServerUsersForm";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Edit Server Users";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServerUsersForm_FormClosing);
 			this.Load += new System.EventHandler(this.ServerUsers_Load);
 			this.flowLayoutPanel1.ResumeLayout(false);
 			this.flowLayoutPanel1.PerformLayout();

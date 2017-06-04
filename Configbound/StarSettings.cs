@@ -14,10 +14,6 @@ using Gameloop.Vdf;
 
 namespace Configbound {
 	public partial class StarSettingsForm : Form {
-		string gameStoragePath = String.Empty;
-		string gameConfigPath = String.Empty;
-		//StarConfig starConfig;
-
 		public StarSettingsForm() {
 			string steamPath;
 
@@ -73,15 +69,16 @@ namespace Configbound {
 			string[] acfLines = File.ReadAllLines(manifestPath);
 			foreach (string line in acfLines) {
 				if (line.Contains("installdir")) {
-					gameStoragePath = libraryPath + @"\common\" + line.Replace("\"installdir\"", "").Trim().Trim('"') + @"\storage";
+					Globals.GameStoragePath = libraryPath + @"\common\" + line.Replace("\"installdir\"", "").Trim().Trim('"') + @"\storage";
 					break;
 				}
 			}
-			if (gameStoragePath == String.Empty) gameStoragePath = libraryPath + @"\common\Starbound\storage";
+			if (Globals.GameStoragePath == String.Empty) Globals.GameStoragePath = libraryPath + @"\common\Starbound\storage";
 
-			gameConfigPath = gameStoragePath + @"\starbound.config";
+			Globals.GameConfigPath = Globals.GameStoragePath + @"\starbound.config";
 
-			StarConfig.Load(gameConfigPath);
+			//StarConfig.Load(gameConfigPath);
+			Globals.StarboundSettings = JsonConvert.DeserializeObject<SettingsRoot>(File.ReadAllText(Globals.GameConfigPath));
 
 			InitializeComponent();
 		}
@@ -97,84 +94,85 @@ namespace Configbound {
 		}
 
 		private void ApplyConfig() {
-			//foreach (KeyValuePair<string, JToken> user in starConfig.ServerUsers) {
-			//	//MessageBox.Show(user.Key + "\n\n" + user.Value);
-			//	MessageBox.Show(user.Value.ToString());
-			//}
 			// Display
-			chkFullscreen.Checked = StarConfig.Fullscreen;
-			chkBorderless.Checked = StarConfig.Borderless;
-			chkVSync.Checked = StarConfig.VSync;
-			chkMaximized.Checked = StarConfig.Maximized;
-			numFullscreenWidth.Value = StarConfig.FullscreenResolution[0].ToObject<int>();
-			numFullscreenHeight.Value = StarConfig.FullscreenResolution[1].ToObject<int>();
-			numWindowedWidth.Value = StarConfig.WindowedResolution[0].ToObject<int>();
-			numWindowedHeight.Value = StarConfig.WindowedResolution[1].ToObject<int>();
+			chkFullscreen.Checked = Globals.StarboundSettings.fullscreen;
+			chkBorderless.Checked = Globals.StarboundSettings.borderless;
+			chkVSync.Checked = Globals.StarboundSettings.vsync;
+			chkMaximized.Checked = Globals.StarboundSettings.maximized;
+			numFullscreenWidth.Value = Globals.StarboundSettings.fullscreenResolution[0];
+			numFullscreenHeight.Value = Globals.StarboundSettings.fullscreenResolution[1];
+			numWindowedWidth.Value = Globals.StarboundSettings.windowedResolution[0];
+			numWindowedHeight.Value = Globals.StarboundSettings.windowedResolution[1];
 
 			// Audio
-			barMusicVolume.Value = StarConfig.MusicVolume;
-			barSFXVolume.Value = StarConfig.SFXVolume;
+			barMusicVolume.Value = Globals.StarboundSettings.musicVol;
+			barSFXVolume.Value = Globals.StarboundSettings.sfxVol;
 
 			// Performance
-			chkLimitTextureAtlasSize.Checked = StarConfig.LimitTextureAtlasSize;
+			chkLimitTextureAtlasSize.Checked = Globals.StarboundSettings.limitTextureAtlasSize;
 
 			// Multiplayer
-			txtServerName.Text = StarConfig.ServerName;
-			numGameServerPort.Value = StarConfig.GameServerPort;
-			numMaxPlayers.Value = StarConfig.MaxPlayers;
-			numMaxTeamSize.Value = StarConfig.MaxTeamSize;
-			chkClientIPJoinable.Checked = StarConfig.ClientIPJoinable;
-			chkClientP2PJoinable.Checked = StarConfig.ClientP2PJoinable;
-			chkAllowAssetsMismatch.Checked = StarConfig.AllowAssetsMismatch;
-			chkCheckAssetsDigest.Checked = StarConfig.CheckAssetsDigest;
-			chkAllowAdminCommands.Checked = StarConfig.AllowAdminCommands;
-			chkAllowAdminCommandsFromAnyone.Checked = StarConfig.AllowAdminCommandsFromAnyone;
-			chkAllowAnonymousConnections.Checked = StarConfig.AllowAnonymousConnections;
-			chkAnonymousConnectionsAreAdmin.Checked = StarConfig.AnonymousConnectionsAreAdmin;
+			txtServerName.Text = Globals.StarboundSettings.serverName;
+			numGameServerPort.Value = Globals.StarboundSettings.gameServerPort;
+			numMaxPlayers.Value = Globals.StarboundSettings.maxPlayers;
+			numMaxTeamSize.Value = Globals.StarboundSettings.maxTeamSize;
+			chkClientIPJoinable.Checked = Globals.StarboundSettings.clientIPJoinable;
+			chkClientP2PJoinable.Checked = Globals.StarboundSettings.clientP2PJoinable;
+			chkAllowAssetsMismatch.Checked = Globals.StarboundSettings.allowAssetsMismatch;
+			chkCheckAssetsDigest.Checked = Globals.StarboundSettings.checkAssetsDigest;
+			chkAllowAdminCommands.Checked = Globals.StarboundSettings.allowAdminCommands;
+			chkAllowAdminCommandsFromAnyone.Checked = Globals.StarboundSettings.allowAdminCommandsFromAnyone;
+			chkAllowAnonymousConnections.Checked = Globals.StarboundSettings.allowAnonymousConnections;
+			chkAnonymousConnectionsAreAdmin.Checked = Globals.StarboundSettings.anonymousConnectionsAreAdmin;
 
 			// Wipe Game Data
-			chkClearPlayerFiles.Checked = StarConfig.ClearPlayerFiles;
-			chkClearUniverseFiles.Checked = StarConfig.ClearUniverseFiles;
+			chkClearPlayerFiles.Checked = Globals.StarboundSettings.clearPlayerFiles;
+			chkClearUniverseFiles.Checked = Globals.StarboundSettings.clearUniverseFiles;
 		}
 
 		private void btnSave_Click(object sender, EventArgs e) {
-			if (StarConfig.IsLoaded) {
-				// Display
-				StarConfig.Fullscreen = chkFullscreen.Checked;
-				StarConfig.Borderless = chkBorderless.Checked;
-				StarConfig.VSync = chkVSync.Checked;
-				StarConfig.Maximized = chkMaximized.Checked;
-				StarConfig.FullscreenResolution[0] = (int)numFullscreenWidth.Value;
-				StarConfig.FullscreenResolution[1] = (int)numFullscreenHeight.Value;
-				StarConfig.WindowedResolution[0] = (int)numWindowedWidth.Value;
-				StarConfig.WindowedResolution[1] = (int)numWindowedHeight.Value;
+			// Display
+			Globals.StarboundSettings.fullscreen = chkFullscreen.Checked;
+			Globals.StarboundSettings.borderless = chkBorderless.Checked;
+			Globals.StarboundSettings.vsync = chkVSync.Checked;
+			Globals.StarboundSettings.maximized = chkMaximized.Checked;
+			Globals.StarboundSettings.fullscreenResolution[0] = (int)numFullscreenWidth.Value;
+			Globals.StarboundSettings.fullscreenResolution[1] = (int)numFullscreenHeight.Value;
+			Globals.StarboundSettings.windowedResolution[0] = (int)numWindowedWidth.Value;
+			Globals.StarboundSettings.windowedResolution[1] = (int)numWindowedHeight.Value;
 
-				// Audio
-				StarConfig.MusicVolume = barMusicVolume.Value;
-				StarConfig.SFXVolume = barSFXVolume.Value;
+			// Audio
+			Globals.StarboundSettings.musicVol = barMusicVolume.Value;
+			Globals.StarboundSettings.sfxVol = barSFXVolume.Value;
 
-				// Performance
-				StarConfig.LimitTextureAtlasSize = chkLimitTextureAtlasSize.Checked;
+			// Performance
+			Globals.StarboundSettings.limitTextureAtlasSize = chkLimitTextureAtlasSize.Checked;
 
-				// Multiplayer
-				StarConfig.ServerName = txtServerName.Text;
-				StarConfig.GameServerPort = (int)numGameServerPort.Value;
-				StarConfig.MaxPlayers = (int)numMaxPlayers.Value;
-				StarConfig.MaxTeamSize = (int)numMaxTeamSize.Value;
-				StarConfig.ClientIPJoinable = chkClientIPJoinable.Checked;
-				StarConfig.ClientP2PJoinable = chkClientP2PJoinable.Checked;
-				StarConfig.AllowAssetsMismatch = chkAllowAssetsMismatch.Checked;
-				StarConfig.CheckAssetsDigest = chkCheckAssetsDigest.Checked;
-				StarConfig.AllowAdminCommands = chkAllowAdminCommands.Checked;
-				StarConfig.AllowAdminCommandsFromAnyone = chkAllowAdminCommandsFromAnyone.Checked;
-				StarConfig.AllowAnonymousConnections = chkAllowAnonymousConnections.Checked;
-				StarConfig.AnonymousConnectionsAreAdmin = chkAnonymousConnectionsAreAdmin.Checked;
+			// Multiplayer
+			Globals.StarboundSettings.serverName = txtServerName.Text;
+			Globals.StarboundSettings.gameServerPort = (int)numGameServerPort.Value;
+			Globals.StarboundSettings.maxPlayers = (int)numMaxPlayers.Value;
+			Globals.StarboundSettings.maxTeamSize = (int)numMaxTeamSize.Value;
+			Globals.StarboundSettings.clientIPJoinable = chkClientIPJoinable.Checked;
+			Globals.StarboundSettings.clientP2PJoinable = chkClientP2PJoinable.Checked;
+			Globals.StarboundSettings.allowAssetsMismatch = chkAllowAssetsMismatch.Checked;
+			Globals.StarboundSettings.checkAssetsDigest = chkCheckAssetsDigest.Checked;
+			Globals.StarboundSettings.allowAdminCommands = chkAllowAdminCommands.Checked;
+			Globals.StarboundSettings.allowAdminCommandsFromAnyone = chkAllowAdminCommandsFromAnyone.Checked;
+			Globals.StarboundSettings.allowAnonymousConnections = chkAllowAnonymousConnections.Checked;
+			Globals.StarboundSettings.anonymousConnectionsAreAdmin = chkAnonymousConnectionsAreAdmin.Checked;
 
-				// Wipe Game Data
-				StarConfig.ClearPlayerFiles = chkClearPlayerFiles.Checked;
-				StarConfig.ClearUniverseFiles = chkClearUniverseFiles.Checked;
+			// Wipe Game Data
+			Globals.StarboundSettings.clearPlayerFiles = chkClearPlayerFiles.Checked;
+			Globals.StarboundSettings.clearUniverseFiles = chkClearUniverseFiles.Checked;
 
-				StarConfig.Save();
+			try {
+				File.Copy(Globals.GameConfigPath, Globals.GameConfigPath + ".bak", true);
+
+				string json = JsonConvert.SerializeObject(Globals.StarboundSettings, Formatting.Indented);
+				File.WriteAllText(Globals.GameConfigPath, json, System.Text.Encoding.UTF8);
+			} catch (Exception ex) {
+				MessageBox.Show("Save Failed!" + Environment.NewLine + ex.Message);
 			}
 		}
 
@@ -184,149 +182,56 @@ namespace Configbound {
 		}
 	}
 
-	static class StarConfig {
-		static dynamic _starConfig;
-		static string _configPath;
+	static class Globals {
+		public static string GameStoragePath = String.Empty;
+		public static string GameConfigPath = String.Empty;
+		public static SettingsRoot StarboundSettings = null;
+	}
 
-		public static void Load(string configPath) {
-			string json = File.ReadAllText(configPath);
-			_starConfig = JsonConvert.DeserializeObject(json);
-			_configPath = configPath;
-		}
-
-		public static void Save() {
-			try {
-				File.Copy(_configPath, _configPath + ".bak", true);
-
-				string json = JsonConvert.SerializeObject(_starConfig, Formatting.Indented);
-				File.WriteAllText(_configPath, json, System.Text.Encoding.UTF8);
-			} catch (Exception ex) {
-				MessageBox.Show("Save Failed!" + Environment.NewLine + ex.Message);
-			}
-		}
-
-		public static bool IsLoaded {
-			get { return _starConfig != default(dynamic); }
-		}
-
+	class SettingsRoot {
 		// Display
-		public static bool Fullscreen {
-			get { return _starConfig.fullscreen; }
-			set { _starConfig.fullscreen = value; }
-		}
-		public static bool Borderless {
-			get { return _starConfig.borderless; }
-			set { _starConfig.borderless = value; }
-		}
-		public static bool VSync {
-			get { return _starConfig.vsync; }
-			set { _starConfig.vsync = value; }
-		}
-		public static bool Maximized {
-			get { return _starConfig.maximized; }
-			set { _starConfig.maximized = value; }
-		}
-		public static JArray FullscreenResolution {
-			get { return _starConfig.fullscreenResolution; }
-			set { _starConfig.fullscreenResolution = value; }
-		}
-		public static JArray WindowedResolution {
-			get { return _starConfig.windowedResolution; }
-			set { _starConfig.windowedResolution = value; }
-		}
+		public bool fullscreen;
+		public bool borderless;
+		public bool vsync;
+		public bool maximized;
+		public List<int> fullscreenResolution;
+		public List<int> windowedResolution;
 
 		// Audio
-		public static int MusicVolume {
-			get { return _starConfig.musicVol; }
-			set { _starConfig.musicVol = value; }
-		}
-		public static int SFXVolume {
-			get { return _starConfig.sfxVol; }
-			set { _starConfig.sfxVol = value; }
-		}
+		public int musicVol;
+		public int sfxVol;
 
 		// Performance
-		public static bool LimitTextureAtlasSize {
-			get { return _starConfig.limitTextureAtlasSize; }
-			set { _starConfig.limitTextureAtlasSize = value; }
-		}
+		public bool limitTextureAtlasSize;
 
 		// Multiplayer
-		public static string ServerName {
-			get { return _starConfig.serverName; }
-			set { _starConfig.serverName = value; }
-		}
-		public static int GameServerPort {
-			get { return _starConfig.gameServerPort; }
-			set { _starConfig.gameServerPort = value; }
-		}
-		public static int MaxPlayers {
-			get { return _starConfig.maxPlayers; }
-			set { _starConfig.maxPlayers = value; }
-		}
-		public static int MaxTeamSize {
-			get { return _starConfig.maxTeamSize; }
-			set { _starConfig.maxTeamSize = value; }
-		}
-		public static bool ClientIPJoinable {
-			get { return _starConfig.clientIPJoinable; }
-			set { _starConfig.clientIPJoinable = value; }
-		}
-		public static bool ClientP2PJoinable {
-			get { return _starConfig.clientP2PJoinable; }
-			set { _starConfig.clientP2PJoinable = value; }
-		}
-		public static bool AllowAssetsMismatch {
-			get { return _starConfig.allowAssetsMismatch; }
-			set { _starConfig.allowAssetsMismatch = value; }
-		}
-		public static bool CheckAssetsDigest {
-			get { return _starConfig.checkAssetsDigest; }
-			set { _starConfig.checkAssetsDigest = value; }
-		}
-		public static bool AllowAdminCommands {
-			get { return _starConfig.allowAdminCommands; }
-			set { _starConfig.allowAdminCommands = value; }
-		}
-		public static bool AllowAdminCommandsFromAnyone {
-			get { return _starConfig.allowAdminCommandsFromAnyone; }
-			set { _starConfig.allowAdminCommandsFromAnyone = value; }
-		}
-		public static bool AllowAnonymousConnections {
-			get { return _starConfig.allowAnonymousConnections; }
-			set { _starConfig.allowAnonymousConnections = value; }
-		}
-		public static bool AnonymousConnectionsAreAdmin {
-			get { return _starConfig.anonymousConnectionsAreAdmin; }
-			set { _starConfig.anonymousConnectionsAreAdmin = value; }
-		}
-		public static JObject ServerUsers {
-			get { return _starConfig.serverUsers; }
-			set { _starConfig.serverUsers = value; }
-		}
-		//public static List<JProperty> ServerUsers {
-		//	get {
-		//		IEnumerable<JProperty> properties = ((JObject)_starConfig.serverUsers).Properties();
-		//		return new List<JProperty>(properties);
-		//	}
-		//	set { ((JObject)_starConfig.serverUsers). = value; }
-		//}
+		public string serverName;
+		public int gameServerPort;
+		public int maxPlayers;
+		public int maxTeamSize;
+		public bool clientIPJoinable;
+		public bool clientP2PJoinable;
+		public bool allowAssetsMismatch;
+		public bool checkAssetsDigest;
+		public bool allowAdminCommands;
+		public bool allowAdminCommandsFromAnyone;
+		public bool allowAnonymousConnections;
+		public bool anonymousConnectionsAreAdmin;
+		public SubSettings serverUsers;
 
 		//public static object bannedIPs { get; set; }
 		//public static object bannedUuids { get; set; }
 
-		//"serverUsers" : {
-		//},
-
 		// Wipe Game Data
-		public static bool ClearPlayerFiles {
-			get { return _starConfig.clearPlayerFiles; }
-			set { _starConfig.clearPlayerFiles = value; }
-		}
+		public bool clearPlayerFiles;
+		public bool clearUniverseFiles;
 
-		public static bool ClearUniverseFiles {
-			get { return _starConfig.clearUniverseFiles; }
-			set { _starConfig.clearUniverseFiles = value; }
+		[JsonExtensionData]
+		public IDictionary<string, JToken> additionalData;
+
+		public class SubSettings {
+			[JsonExtensionData]
+			public IDictionary<string, JToken> additionalData;
 		}
 
 		//public List<int> audioChannelSeparation { get; set; }

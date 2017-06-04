@@ -83,7 +83,7 @@
 			this.btnSaveUser.UseVisualStyleBackColor = true;
 			this.btnSaveUser.Click += new System.EventHandler(this.btnSaveUser_Click);
 			// 
-			// ServerUserEdit
+			// ServerUserEditForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,7 +94,11 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.txtPassword);
 			this.Controls.Add(this.txtUsername);
-			this.Name = "ServerUserEdit";
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
+			this.Name = "ServerUserEditForm";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Edit Server User";
 			this.Load += new System.EventHandler(this.ServerUserEdit_Load);
