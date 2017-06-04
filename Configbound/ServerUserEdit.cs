@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Configbound {
-	public partial class ServerUserEditForm : Form {
+	public partial class ServerUserEdit : Form {
 		bool _isEditing;
 
-		public ServerUserEditForm(bool isEditing) {
+		public ServerUserEdit(bool isEditing) {
 			_isEditing = isEditing;
 			InitializeComponent();
 		}
 
 		private void ServerUserEdit_Load(object sender, EventArgs e) {
 			if (_isEditing) {
-				txtUsername.Text = ServerUsersForm.SelectedUser.Value.Key;
-				txtPassword.Text = ((dynamic)ServerUsersForm.SelectedUser.Value.Value).password;
-				chkAdmin.Checked = ((dynamic)ServerUsersForm.SelectedUser.Value.Value).admin;
+				txtUsername.Text = ServerUsers.SelectedUser.Value.Key;
+				txtPassword.Text = ((dynamic)ServerUsers.SelectedUser.Value.Value).password;
+				chkAdmin.Checked = ((dynamic)ServerUsers.SelectedUser.Value.Value).admin;
 			}
 		}
 
@@ -37,7 +35,7 @@ namespace Configbound {
 
 			if (_isEditing) {
 
-				nameChanged = nameTrimmed != ServerUsersForm.SelectedUser.Value.Key;
+				nameChanged = nameTrimmed != ServerUsers.SelectedUser.Value.Key;
 				nameConflict = nameChanged && nameTypedExistsInList;
 			} else {
 				nameConflict = nameTypedExistsInList;
@@ -52,10 +50,10 @@ namespace Configbound {
 
 			if (applyChanges) {
 				if (_isEditing) {
-					dynamic tmp = ServerUsersForm.SelectedUser.Value.Value;
+					dynamic tmp = ServerUsers.SelectedUser.Value.Value;
 					tmp.password = passTrimmed;
 					tmp.admin = chkAdmin.Checked;
-					if (nameChanged) ChangeUsername(ServerUsersForm.SelectedUser.Value.Key, nameTrimmed);
+					if (nameChanged) ChangeUsername(ServerUsers.SelectedUser.Value.Key, nameTrimmed);
 				} else {
 					JObject userJson = JObject.Parse(String.Format(@"
 					{{
@@ -64,7 +62,7 @@ namespace Configbound {
 					}}", chkAdmin.Enabled.ToString().ToLower(), passTrimmed));
 					Globals.StarboundSettings.serverUsers.additionalData.Add(nameTrimmed, userJson);
 				}
-				((ServerUsersForm)this.Owner).PopulateList();
+				((ServerUsers)this.Owner).PopulateList();
 				this.Close();
 			}
 		}

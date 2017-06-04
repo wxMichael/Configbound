@@ -12,7 +12,3 @@ Any feedback on the code is appreciated.
 
 ## License
 No license is provided yet for this project, and no permissions granted.
-
-This project makes use of the following:
-* Newtonsoft.Json, which is under The MIT License (MIT) and Copyright (c) 2007 James Newton-King.
-* Gameloop.Vdf, which is under The MIT License (MIT) and Copyright (c) 2016 Shravan Rajinikanth.

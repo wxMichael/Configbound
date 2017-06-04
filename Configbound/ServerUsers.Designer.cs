@@ -1,5 +1,5 @@
 ﻿namespace Configbound {
-	partial class ServerUsersForm {
+	partial class ServerUsers {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -125,7 +125,7 @@
 			this.btnRemove.UseVisualStyleBackColor = true;
 			this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
 			// 
-			// ServerUsersForm
+			// ServerUsers
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,7 +135,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "ServerUsersForm";
+			this.Name = "ServerUsers";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Edit Server Users";

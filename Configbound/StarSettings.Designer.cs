@@ -1,5 +1,5 @@
 ﻿namespace Configbound {
-	partial class StarSettingsForm {
+	partial class StarSettings {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -557,6 +557,7 @@
 			// txtServerName
 			// 
 			this.txtServerName.Location = new System.Drawing.Point(91, 13);
+			this.txtServerName.MaxLength = 100;
 			this.txtServerName.Name = "txtServerName";
 			this.txtServerName.Size = new System.Drawing.Size(172, 20);
 			this.txtServerName.TabIndex = 14;
@@ -731,7 +732,7 @@
 			this.btnAbout.UseVisualStyleBackColor = true;
 			this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
 			// 
-			// StarSettingsForm
+			// StarSettings
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -745,7 +746,7 @@
 			this.Controls.Add(this.btnSave);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "StarSettingsForm";
+			this.Name = "StarSettings";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Configbound";
 			this.Load += new System.EventHandler(this.StarSettings_Load);

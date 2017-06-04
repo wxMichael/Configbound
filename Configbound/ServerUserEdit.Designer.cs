@@ -1,5 +1,5 @@
 ﻿namespace Configbound {
-	partial class ServerUserEditForm {
+	partial class ServerUserEdit {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -34,6 +34,7 @@
 			// txtUsername
 			// 
 			this.txtUsername.Location = new System.Drawing.Point(73, 6);
+			this.txtUsername.MaxLength = 60;
 			this.txtUsername.Name = "txtUsername";
 			this.txtUsername.Size = new System.Drawing.Size(160, 20);
 			this.txtUsername.TabIndex = 0;
@@ -41,6 +42,7 @@
 			// txtPassword
 			// 
 			this.txtPassword.Location = new System.Drawing.Point(73, 32);
+			this.txtPassword.MaxLength = 60;
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.Size = new System.Drawing.Size(160, 20);
 			this.txtPassword.TabIndex = 1;
@@ -83,8 +85,9 @@
 			this.btnSaveUser.UseVisualStyleBackColor = true;
 			this.btnSaveUser.Click += new System.EventHandler(this.btnSaveUser_Click);
 			// 
-			// ServerUserEditForm
+			// ServerUserEdit
 			// 
+			this.AcceptButton = this.btnSaveUser;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(249, 90);
@@ -97,7 +100,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "ServerUserEditForm";
+			this.Name = "ServerUserEdit";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Edit Server User";

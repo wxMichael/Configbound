@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Configbound {
-	public partial class ServerUsersForm : Form {
+	public partial class ServerUsers : Form {
 		public static KeyValuePair<string, JToken>? SelectedUser = null;
 
-		public ServerUsersForm() {
+		public ServerUsers() {
 			InitializeComponent();
 		}
 
@@ -22,13 +20,13 @@ namespace Configbound {
 			// Hacky way to deselect ListView items; will fix it later ¯\_(ツ)_/¯
 			PopulateList();
 
-			ServerUserEditForm frmServerUserEdit = new ServerUserEditForm(false);
+			ServerUserEdit frmServerUserEdit = new ServerUserEdit(false);
 			frmServerUserEdit.ShowDialog(this);
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e) {
 			if (SelectedUser != null) {
-				ServerUserEditForm frmServerUserEdit = new ServerUserEditForm(true);
+				ServerUserEdit frmServerUserEdit = new ServerUserEdit(true);
 				frmServerUserEdit.ShowDialog(this);
 			}
 		}

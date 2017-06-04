@@ -56,7 +56,7 @@
 			this.lblVersion.Location = new System.Drawing.Point(50, 79);
 			this.lblVersion.Name = "lblVersion";
 			this.lblVersion.Size = new System.Drawing.Size(192, 20);
-			this.lblVersion.TabIndex = 2;
+			this.lblVersion.TabIndex = 0;
 			this.lblVersion.Text = "Version";
 			this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
@@ -65,7 +65,7 @@
 			this.btnClose.Location = new System.Drawing.Point(105, 226);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
-			this.btnClose.TabIndex = 3;
+			this.btnClose.TabIndex = 2;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);

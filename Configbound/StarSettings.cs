@@ -7,14 +7,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Gameloop.Vdf;
 
-// TODO:
-// Add to ApplyConfig(): ServerUsers, bannedIPs, bannedUuids
-// Add to StarConfig.Save(): ServerUsers, bannedIPs, bannedUuids
-
-
 namespace Configbound {
-	public partial class StarSettingsForm : Form {
-		public StarSettingsForm() {
+	public partial class StarSettings : Form {
+		public StarSettings() {
 			string steamPath;
 
 			// Find Steam Install Path
@@ -177,7 +172,7 @@ namespace Configbound {
 		}
 
 		private void btnServerUsers_Click(object sender, EventArgs e) {
-			ServerUsersForm frmServerUsers = new ServerUsersForm();
+			ServerUsers frmServerUsers = new ServerUsers();
 			frmServerUsers.ShowDialog(this);
 		}
 
