@@ -74,6 +74,7 @@
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.chkLimitTextureAtlasSize = new System.Windows.Forms.CheckBox();
 			this.tipStarSettings = new System.Windows.Forms.ToolTip(this.components);
+			this.btnAbout = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numWindowedHeight)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numWindowedWidth)).BeginInit();
@@ -718,11 +719,24 @@
 			this.tipStarSettings.IsBalloon = true;
 			this.tipStarSettings.ReshowDelay = 100;
 			// 
-			// StarSettings
+			// btnAbout
+			// 
+			this.btnAbout.AutoSize = true;
+			this.btnAbout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btnAbout.Location = new System.Drawing.Point(477, 372);
+			this.btnAbout.Name = "btnAbout";
+			this.btnAbout.Size = new System.Drawing.Size(45, 23);
+			this.btnAbout.TabIndex = 30;
+			this.btnAbout.Text = "About";
+			this.btnAbout.UseVisualStyleBackColor = true;
+			this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+			// 
+			// StarSettingsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(534, 402);
+			this.Controls.Add(this.btnAbout);
 			this.Controls.Add(this.groupBox5);
 			this.Controls.Add(this.groupBox4);
 			this.Controls.Add(this.groupBox3);
@@ -731,7 +745,7 @@
 			this.Controls.Add(this.btnSave);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "StarSettings";
+			this.Name = "StarSettingsForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Configbound";
 			this.Load += new System.EventHandler(this.StarSettings_Load);
@@ -759,6 +773,7 @@
 			this.groupBox5.ResumeLayout(false);
 			this.groupBox5.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -813,6 +828,7 @@
 		private System.Windows.Forms.ToolTip tipStarSettings;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Button btnAbout;
 	}
 }
 

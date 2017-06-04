@@ -180,6 +180,11 @@ namespace Configbound {
 			ServerUsersForm frmServerUsers = new ServerUsersForm();
 			frmServerUsers.ShowDialog(this);
 		}
+
+		private void btnAbout_Click(object sender, EventArgs e) {
+			About frmAbout = new About();
+			frmAbout.ShowDialog(this);
+		}
 	}
 
 	static class Globals {
