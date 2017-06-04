@@ -418,6 +418,7 @@
 			this.btnBannedIPs.TabIndex = 27;
 			this.btnBannedIPs.Text = "Banned IPs";
 			this.btnBannedIPs.UseVisualStyleBackColor = true;
+			this.btnBannedIPs.Click += new System.EventHandler(this.btnBannedIPs_Click);
 			// 
 			// btnBannedUUIDs
 			// 
@@ -430,6 +431,7 @@
 			this.btnBannedUUIDs.TabIndex = 28;
 			this.btnBannedUUIDs.Text = "Banned UUIDs";
 			this.btnBannedUUIDs.UseVisualStyleBackColor = true;
+			this.btnBannedUUIDs.Click += new System.EventHandler(this.btnBannedUUIDs_Click);
 			// 
 			// flowLayoutPanel1
 			// 

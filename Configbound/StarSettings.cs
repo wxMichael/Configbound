@@ -21,7 +21,7 @@ namespace Configbound {
 					}
 				}
 			} catch (Exception ex) {
-				throw new Exception("Failed to open registry. Try running the application as Admin." + Environment.NewLine + ex.Message);
+				throw new Exception("Failed to open registry. Please report this issue." + Environment.NewLine + ex.Message);
 			}
 
 			// Find Steam Library Folders
@@ -41,11 +41,12 @@ namespace Configbound {
 							libraryFolders.Add(child.Value.ToString());
 						}
 					}
+				} else {
+					throw new Exception("Failed to find libraryfolders.vdf. Please report this issue.");
 				}
 			} catch (Exception ex) {
-				throw new Exception("Failed to parse libraryfolders.vdf." + Environment.NewLine + ex.Message);
+				throw new Exception("Failed to parse libraryfolders.vdf. Please report this issue." + Environment.NewLine + ex.Message);
 			}
-
 
 			// Find Starbound App Manifest
 			string libraryPath = String.Empty;
@@ -55,9 +56,8 @@ namespace Configbound {
 					break;
 				}
 			}
-			if (libraryPath == String.Empty) throw new Exception("Failed to find Starbound appmanifest!");
+			if (libraryPath == String.Empty) throw new Exception("Failed to find Starbound appmanifest! Please report this issue.");
 			string manifestPath = libraryPath + @"\appmanifest_211820.acf";
-
 
 			// Find Starbound Install Directory
 			string installDir = String.Empty;
@@ -69,11 +69,13 @@ namespace Configbound {
 				}
 			}
 			if (Globals.GameStoragePath == String.Empty) Globals.GameStoragePath = libraryPath + @"\common\Starbound\storage";
-
 			Globals.GameConfigPath = Globals.GameStoragePath + @"\starbound.config";
 
-			//StarConfig.Load(gameConfigPath);
-			Globals.StarboundSettings = JsonConvert.DeserializeObject<SettingsRoot>(File.ReadAllText(Globals.GameConfigPath));
+			if (File.Exists(Globals.GameConfigPath)) {
+				Globals.StarboundSettings = JsonConvert.DeserializeObject<SettingsRoot>(File.ReadAllText(Globals.GameConfigPath));
+			} else {
+				throw new Exception("Failed to read starbound.config! Please report this issue.");
+			}
 
 			InitializeComponent();
 		}
@@ -82,47 +84,7 @@ namespace Configbound {
 			ApplyConfig();
 			lblMusicVolume.DataBindings.Add("Text", barMusicVolume, "Value");
 			lblSFXVolume.DataBindings.Add("Text", barSFXVolume, "Value");
-			btnSave.Enabled = true;
-			btnServerUsers.Enabled = true;
-			//btnBannedIPs.Enabled = true;
-			//btnBannedUUIDs.Enabled = true;
-		}
-
-		private void ApplyConfig() {
-			// Display
-			chkFullscreen.Checked = Globals.StarboundSettings.fullscreen;
-			chkBorderless.Checked = Globals.StarboundSettings.borderless;
-			chkVSync.Checked = Globals.StarboundSettings.vsync;
-			chkMaximized.Checked = Globals.StarboundSettings.maximized;
-			numFullscreenWidth.Value = Globals.StarboundSettings.fullscreenResolution[0];
-			numFullscreenHeight.Value = Globals.StarboundSettings.fullscreenResolution[1];
-			numWindowedWidth.Value = Globals.StarboundSettings.windowedResolution[0];
-			numWindowedHeight.Value = Globals.StarboundSettings.windowedResolution[1];
-
-			// Audio
-			barMusicVolume.Value = Globals.StarboundSettings.musicVol;
-			barSFXVolume.Value = Globals.StarboundSettings.sfxVol;
-
-			// Performance
-			chkLimitTextureAtlasSize.Checked = Globals.StarboundSettings.limitTextureAtlasSize;
-
-			// Multiplayer
-			txtServerName.Text = Globals.StarboundSettings.serverName;
-			numGameServerPort.Value = Globals.StarboundSettings.gameServerPort;
-			numMaxPlayers.Value = Globals.StarboundSettings.maxPlayers;
-			numMaxTeamSize.Value = Globals.StarboundSettings.maxTeamSize;
-			chkClientIPJoinable.Checked = Globals.StarboundSettings.clientIPJoinable;
-			chkClientP2PJoinable.Checked = Globals.StarboundSettings.clientP2PJoinable;
-			chkAllowAssetsMismatch.Checked = Globals.StarboundSettings.allowAssetsMismatch;
-			chkCheckAssetsDigest.Checked = Globals.StarboundSettings.checkAssetsDigest;
-			chkAllowAdminCommands.Checked = Globals.StarboundSettings.allowAdminCommands;
-			chkAllowAdminCommandsFromAnyone.Checked = Globals.StarboundSettings.allowAdminCommandsFromAnyone;
-			chkAllowAnonymousConnections.Checked = Globals.StarboundSettings.allowAnonymousConnections;
-			chkAnonymousConnectionsAreAdmin.Checked = Globals.StarboundSettings.anonymousConnectionsAreAdmin;
-
-			// Wipe Game Data
-			chkClearPlayerFiles.Checked = Globals.StarboundSettings.clearPlayerFiles;
-			chkClearUniverseFiles.Checked = Globals.StarboundSettings.clearUniverseFiles;
+			btnSave.Enabled = btnServerUsers.Enabled = btnBannedIPs.Enabled = btnBannedUUIDs.Enabled = true;
 		}
 
 		private void btnSave_Click(object sender, EventArgs e) {
@@ -172,13 +134,56 @@ namespace Configbound {
 		}
 
 		private void btnServerUsers_Click(object sender, EventArgs e) {
-			ServerUsers frmServerUsers = new ServerUsers();
-			frmServerUsers.ShowDialog(this);
+			new ServerUsers().ShowDialog(this);
 		}
 
 		private void btnAbout_Click(object sender, EventArgs e) {
-			About frmAbout = new About();
-			frmAbout.ShowDialog(this);
+			new About().ShowDialog(this);
+		}
+
+		private void btnBannedIPs_Click(object sender, EventArgs e) {
+			//new BannedIPs().ShowDialog(this);
+		}
+
+		private void btnBannedUUIDs_Click(object sender, EventArgs e) {
+			//new BannedUUIDs().ShowDialog(this);
+		}
+
+		private void ApplyConfig() {
+			// Display
+			chkFullscreen.Checked = Globals.StarboundSettings.fullscreen;
+			chkBorderless.Checked = Globals.StarboundSettings.borderless;
+			chkVSync.Checked = Globals.StarboundSettings.vsync;
+			chkMaximized.Checked = Globals.StarboundSettings.maximized;
+			numFullscreenWidth.Value = Globals.StarboundSettings.fullscreenResolution[0];
+			numFullscreenHeight.Value = Globals.StarboundSettings.fullscreenResolution[1];
+			numWindowedWidth.Value = Globals.StarboundSettings.windowedResolution[0];
+			numWindowedHeight.Value = Globals.StarboundSettings.windowedResolution[1];
+
+			// Audio
+			barMusicVolume.Value = Globals.StarboundSettings.musicVol;
+			barSFXVolume.Value = Globals.StarboundSettings.sfxVol;
+
+			// Performance
+			chkLimitTextureAtlasSize.Checked = Globals.StarboundSettings.limitTextureAtlasSize;
+
+			// Multiplayer
+			txtServerName.Text = Globals.StarboundSettings.serverName;
+			numGameServerPort.Value = Globals.StarboundSettings.gameServerPort;
+			numMaxPlayers.Value = Globals.StarboundSettings.maxPlayers;
+			numMaxTeamSize.Value = Globals.StarboundSettings.maxTeamSize;
+			chkClientIPJoinable.Checked = Globals.StarboundSettings.clientIPJoinable;
+			chkClientP2PJoinable.Checked = Globals.StarboundSettings.clientP2PJoinable;
+			chkAllowAssetsMismatch.Checked = Globals.StarboundSettings.allowAssetsMismatch;
+			chkCheckAssetsDigest.Checked = Globals.StarboundSettings.checkAssetsDigest;
+			chkAllowAdminCommands.Checked = Globals.StarboundSettings.allowAdminCommands;
+			chkAllowAdminCommandsFromAnyone.Checked = Globals.StarboundSettings.allowAdminCommandsFromAnyone;
+			chkAllowAnonymousConnections.Checked = Globals.StarboundSettings.allowAnonymousConnections;
+			chkAnonymousConnectionsAreAdmin.Checked = Globals.StarboundSettings.anonymousConnectionsAreAdmin;
+
+			// Wipe Game Data
+			chkClearPlayerFiles.Checked = Globals.StarboundSettings.clearPlayerFiles;
+			chkClearUniverseFiles.Checked = Globals.StarboundSettings.clearUniverseFiles;
 		}
 	}
 
