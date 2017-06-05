@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Configbound {
@@ -28,10 +29,15 @@ namespace Configbound {
 				return;
 			}
 
+			// also need to test if removing the last user causes issues saving, and also then readding a user and saving
+
+			// Check if serverUsers is currently empty
+			bool noUsers = Globals.StarboundSettings.serverUsers.additionalData == null;
+
 			// Detect Name Conflicts
 			bool nameConflict = false;
 			bool nameChanged = false;
-			bool nameTypedExistsInList = Globals.StarboundSettings.serverUsers.additionalData.ContainsKey(nameTrimmed);
+			bool nameTypedExistsInList = !noUsers && Globals.StarboundSettings.serverUsers.additionalData.ContainsKey(nameTrimmed);
 
 			if (_isEditing) {
 
@@ -55,12 +61,28 @@ namespace Configbound {
 					tmp.admin = chkAdmin.Checked;
 					if (nameChanged) ChangeUsername(ServerUsers.SelectedUser.Value.Key, nameTrimmed);
 				} else {
-					JObject userJson = JObject.Parse(String.Format(@"
-					{{
-						""admin"" : {0},
-						""password"" : ""{1}""
-					}}", chkAdmin.Enabled.ToString().ToLower(), passTrimmed));
-					Globals.StarboundSettings.serverUsers.additionalData.Add(nameTrimmed, userJson);
+					if (noUsers) {
+						string serverUsersJson = String.Format(@"
+						{{
+							""fullscreen"" : false,
+							""serverUsers"" : {{
+								""{0}"" : {{
+									""admin"" : {1},
+									""password"" : ""{2}""
+								}}
+							}}
+						}}", nameTrimmed, chkAdmin.Checked.ToString().ToLower(), passTrimmed);
+						SettingsRoot newSettings = JsonConvert.DeserializeObject<SettingsRoot>(serverUsersJson);
+						Globals.StarboundSettings.serverUsers = newSettings.serverUsers;
+					} else {
+						System.Diagnostics.Debug.WriteLine(chkAdmin.Enabled.ToString().ToLower());
+						JObject userJson = JObject.Parse(String.Format(@"
+						{{
+							""admin"" : {0},
+							""password"" : ""{1}""
+						}}", chkAdmin.Checked.ToString().ToLower(), passTrimmed));
+						Globals.StarboundSettings.serverUsers.additionalData[nameTrimmed] = userJson;
+					}
 				}
 				((ServerUsers)this.Owner).PopulateList();
 				this.Close();

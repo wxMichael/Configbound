@@ -84,7 +84,7 @@ namespace Configbound {
 			ApplyConfig();
 			lblMusicVolume.DataBindings.Add("Text", barMusicVolume, "Value");
 			lblSFXVolume.DataBindings.Add("Text", barSFXVolume, "Value");
-			btnSave.Enabled = btnServerUsers.Enabled = btnBannedIPs.Enabled = btnBannedUUIDs.Enabled = true;
+			btnSave.Enabled = btnServerUsers.Enabled = btnBannedPlayers.Enabled = true;
 		}
 
 		private void btnSave_Click(object sender, EventArgs e) {
@@ -142,12 +142,10 @@ namespace Configbound {
 		}
 
 		private void btnBannedIPs_Click(object sender, EventArgs e) {
-			//new BannedIPs().ShowDialog(this);
+			new BannedPlayers().ShowDialog(this);
 		}
 
-		private void btnBannedUUIDs_Click(object sender, EventArgs e) {
-			//new BannedUUIDs().ShowDialog(this);
-		}
+		//private void btnBannedUUIDs_Click(object sender, EventArgs e) { }
 
 		private void ApplyConfig() {
 			// Display

@@ -64,13 +64,16 @@ namespace Configbound {
 			SelectedUser = null;
 			btnEdit.Enabled = btnAdmin.Enabled = btnRemove.Enabled = false;
 			lstServerUsers.Items.Clear();
-			foreach (string userName in Globals.StarboundSettings.serverUsers.additionalData.Keys) {
-				dynamic user = Globals.StarboundSettings.serverUsers.additionalData[userName];
+			if (Globals.StarboundSettings.serverUsers.additionalData != null) {
+			//if (Globals.StarboundSettings.serverUsers.additionalData.Count > 0) {
+				foreach (string userName in Globals.StarboundSettings.serverUsers.additionalData.Keys) {
+					dynamic user = Globals.StarboundSettings.serverUsers.additionalData[userName];
 
-				ListViewItem li = new ListViewItem(userName);
-				li.SubItems.Add((string)user.password);
-				li.SubItems.Add((bool)user.admin ? "✓" : "");
-				lstServerUsers.Items.Add(li);
+					ListViewItem li = new ListViewItem(userName);
+					li.SubItems.Add((string)user.password);
+					li.SubItems.Add((bool)user.admin ? "✓" : "");
+					lstServerUsers.Items.Add(li);
+				}
 			}
 		}
 	}

@@ -46,8 +46,7 @@
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
 			this.btnServerUsers = new System.Windows.Forms.Button();
-			this.btnBannedIPs = new System.Windows.Forms.Button();
-			this.btnBannedUUIDs = new System.Windows.Forms.Button();
+			this.btnBannedPlayers = new System.Windows.Forms.Button();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.chkClientIPJoinable = new System.Windows.Forms.CheckBox();
 			this.chkClientP2PJoinable = new System.Windows.Forms.CheckBox();
@@ -387,11 +386,10 @@
 			this.flowLayoutPanel2.AutoSize = true;
 			this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.flowLayoutPanel2.Controls.Add(this.btnServerUsers);
-			this.flowLayoutPanel2.Controls.Add(this.btnBannedIPs);
-			this.flowLayoutPanel2.Controls.Add(this.btnBannedUUIDs);
+			this.flowLayoutPanel2.Controls.Add(this.btnBannedPlayers);
 			this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 309);
 			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-			this.flowLayoutPanel2.Size = new System.Drawing.Size(257, 29);
+			this.flowLayoutPanel2.Size = new System.Drawing.Size(181, 29);
 			this.flowLayoutPanel2.TabIndex = 0;
 			// 
 			// btnServerUsers
@@ -407,31 +405,18 @@
 			this.btnServerUsers.UseVisualStyleBackColor = true;
 			this.btnServerUsers.Click += new System.EventHandler(this.btnServerUsers_Click);
 			// 
-			// btnBannedIPs
+			// btnBannedPlayers
 			// 
-			this.btnBannedIPs.AutoSize = true;
-			this.btnBannedIPs.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btnBannedIPs.Enabled = false;
-			this.btnBannedIPs.Location = new System.Drawing.Point(87, 3);
-			this.btnBannedIPs.Name = "btnBannedIPs";
-			this.btnBannedIPs.Size = new System.Drawing.Size(72, 23);
-			this.btnBannedIPs.TabIndex = 27;
-			this.btnBannedIPs.Text = "Banned IPs";
-			this.btnBannedIPs.UseVisualStyleBackColor = true;
-			this.btnBannedIPs.Click += new System.EventHandler(this.btnBannedIPs_Click);
-			// 
-			// btnBannedUUIDs
-			// 
-			this.btnBannedUUIDs.AutoSize = true;
-			this.btnBannedUUIDs.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btnBannedUUIDs.Enabled = false;
-			this.btnBannedUUIDs.Location = new System.Drawing.Point(165, 3);
-			this.btnBannedUUIDs.Name = "btnBannedUUIDs";
-			this.btnBannedUUIDs.Size = new System.Drawing.Size(89, 23);
-			this.btnBannedUUIDs.TabIndex = 28;
-			this.btnBannedUUIDs.Text = "Banned UUIDs";
-			this.btnBannedUUIDs.UseVisualStyleBackColor = true;
-			this.btnBannedUUIDs.Click += new System.EventHandler(this.btnBannedUUIDs_Click);
+			this.btnBannedPlayers.AutoSize = true;
+			this.btnBannedPlayers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btnBannedPlayers.Enabled = false;
+			this.btnBannedPlayers.Location = new System.Drawing.Point(87, 3);
+			this.btnBannedPlayers.Name = "btnBannedPlayers";
+			this.btnBannedPlayers.Size = new System.Drawing.Size(91, 23);
+			this.btnBannedPlayers.TabIndex = 27;
+			this.btnBannedPlayers.Text = "Banned Players";
+			this.btnBannedPlayers.UseVisualStyleBackColor = true;
+			this.btnBannedPlayers.Click += new System.EventHandler(this.btnBannedIPs_Click);
 			// 
 			// flowLayoutPanel1
 			// 
@@ -822,8 +807,7 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label lblSFXVolume;
 		private System.Windows.Forms.Label lblMusicVolume;
-		private System.Windows.Forms.Button btnBannedIPs;
-		private System.Windows.Forms.Button btnBannedUUIDs;
+		private System.Windows.Forms.Button btnBannedPlayers;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
 		private System.Windows.Forms.Button btnServerUsers;
 		private System.Windows.Forms.GroupBox groupBox5;
