@@ -1,7 +1,7 @@
 # Configbound
 A GUI for modifying starbound.config.
 
-![](http://i.imgur.com/wykIayW.png)
+![](https://github.com/wxMichael/Configbound/blob/master/media/Configbound.png)
 
 ## Purpose
 This project is a way to get back into programming and brush up on my skills.
