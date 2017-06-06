@@ -12,3 +12,5 @@ Any feedback on the code is appreciated.
 
 ## License
 No license is provided yet for this project, and no permissions granted.
+
+Gear Icon is &copy; Hopstarter and licensed under [CC Attribution-Noncommercial-No Derivate 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
