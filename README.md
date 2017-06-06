@@ -1,4 +1,4 @@
-# Configbound
+# ![](https://github.com/wxMichael/Configbound/blob/master/media/gear.png) Configbound
 A GUI for modifying starbound.config.
 
 ![](https://github.com/wxMichael/Configbound/blob/master/media/Configbound.png)
