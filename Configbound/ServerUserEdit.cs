@@ -29,8 +29,6 @@ namespace Configbound {
 				return;
 			}
 
-			// also need to test if removing the last user causes issues saving, and also then readding a user and saving
-
 			// Check if serverUsers is currently empty
 			bool noUsers = Globals.StarboundSettings.serverUsers.additionalData == null;
 

@@ -80,7 +80,7 @@
 			this.lstBannedUUIDs.MultiSelect = false;
 			this.lstBannedUUIDs.Name = "lstBannedUUIDs";
 			this.lstBannedUUIDs.Size = new System.Drawing.Size(366, 160);
-			this.lstBannedUUIDs.TabIndex = 1;
+			this.lstBannedUUIDs.TabIndex = 4;
 			this.lstBannedUUIDs.UseCompatibleStateImageBehavior = false;
 			this.lstBannedUUIDs.View = System.Windows.Forms.View.Details;
 			this.lstBannedUUIDs.SelectedIndexChanged += new System.EventHandler(this.BannedPlayers_SelectedIndexChanged);
@@ -135,7 +135,7 @@
 			this.btnIPRemove.Location = new System.Drawing.Point(3, 61);
 			this.btnIPRemove.Name = "btnIPRemove";
 			this.btnIPRemove.Size = new System.Drawing.Size(82, 23);
-			this.btnIPRemove.TabIndex = 4;
+			this.btnIPRemove.TabIndex = 3;
 			this.btnIPRemove.Text = "Remove";
 			this.btnIPRemove.UseVisualStyleBackColor = true;
 			this.btnIPRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -158,7 +158,7 @@
 			this.btnUUIDAdd.Location = new System.Drawing.Point(3, 3);
 			this.btnUUIDAdd.Name = "btnUUIDAdd";
 			this.btnUUIDAdd.Size = new System.Drawing.Size(82, 23);
-			this.btnUUIDAdd.TabIndex = 1;
+			this.btnUUIDAdd.TabIndex = 5;
 			this.btnUUIDAdd.Text = "Add";
 			this.btnUUIDAdd.UseVisualStyleBackColor = true;
 			this.btnUUIDAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -169,7 +169,7 @@
 			this.btnUUIDEdit.Location = new System.Drawing.Point(3, 32);
 			this.btnUUIDEdit.Name = "btnUUIDEdit";
 			this.btnUUIDEdit.Size = new System.Drawing.Size(82, 23);
-			this.btnUUIDEdit.TabIndex = 2;
+			this.btnUUIDEdit.TabIndex = 6;
 			this.btnUUIDEdit.Text = "Edit";
 			this.btnUUIDEdit.UseVisualStyleBackColor = true;
 			this.btnUUIDEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -180,7 +180,7 @@
 			this.btnUUIDRemove.Location = new System.Drawing.Point(3, 61);
 			this.btnUUIDRemove.Name = "btnUUIDRemove";
 			this.btnUUIDRemove.Size = new System.Drawing.Size(82, 23);
-			this.btnUUIDRemove.TabIndex = 4;
+			this.btnUUIDRemove.TabIndex = 7;
 			this.btnUUIDRemove.Text = "Remove";
 			this.btnUUIDRemove.UseVisualStyleBackColor = true;
 			this.btnUUIDRemove.Click += new System.EventHandler(this.btnRemove_Click);

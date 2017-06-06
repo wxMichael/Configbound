@@ -145,8 +145,6 @@ namespace Configbound {
 			new BannedPlayers().ShowDialog(this);
 		}
 
-		//private void btnBannedUUIDs_Click(object sender, EventArgs e) { }
-
 		private void ApplyConfig() {
 			// Display
 			chkFullscreen.Checked = Globals.StarboundSettings.fullscreen;
@@ -236,37 +234,42 @@ namespace Configbound {
 			public IDictionary<string, JToken> additionalData;
 		}
 
-		//public List<int> audioChannelSeparation { get; set; }
+
+		//
+		// Unimplemented starbound.config options:
+		//
+
+		//public List<int> audioChannelSeparation;
 
 		//"configurationVersion" : {
 		//	"basic" : 1,
 		//	"client" : 6
 		//},
 
-		//public string gameServerBind { get; set; }
+		//public string gameServerBind;
 
 		//"crafting" : {
 		//	"filterHaveMaterials" : false
 		//},
-		//public bool interactiveHighlight { get; set; }
+		//public bool interactiveHighlight;
 		//"inventory" : {
 		//	"pickupToActionBar" : true
 		//},
-		//public bool speechBubbles { get; set; }
-		//public int zoomLevel { get; set; }
-		//public bool tutorialMessages { get; set; }
+		//public bool speechBubbles;
+		//public int zoomLevel;
+		//public bool tutorialMessages;
 
-		//public bool modsWarningShown { get; set; }
-		//public int playerBackupFileCount { get; set; }
-		//public string queryServerBind { get; set; }
-		//public string rconServerBind { get; set; }
-		//public bool renderSleep { get; set; }
-		//public bool safeScripts { get; set; }
-		//public intLONG? scriptInstructionLimit { get; set; }
-		//public intLONG? scriptInstructionMeasureInterval { get; set; }
-		//public bool scriptProfilingEnabled { get; set; }
-		//public intLONG? scriptRecursionLimit { get; set; }
-		//public string serverFidelity { get; set; }
+		//public bool modsWarningShown;
+		//public int playerBackupFileCount;
+		//public string queryServerBind;
+		//public string rconServerBind;
+		//public bool renderSleep;
+		//public bool safeScripts;
+		//public intLONG? scriptInstructionLimit;
+		//public intLONG? scriptInstructionMeasureInterval;
+		//public bool scriptProfilingEnabled;
+		//public intLONG? scriptRecursionLimit;
+		//public string serverFidelity;
 
 		//"title" : {
 		//	"multiPlayerAccount" : "",

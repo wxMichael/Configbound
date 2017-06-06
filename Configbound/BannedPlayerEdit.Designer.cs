@@ -35,7 +35,7 @@
 			this.btnSaveBan.Location = new System.Drawing.Point(217, 58);
 			this.btnSaveBan.Name = "btnSaveBan";
 			this.btnSaveBan.Size = new System.Drawing.Size(75, 23);
-			this.btnSaveBan.TabIndex = 4;
+			this.btnSaveBan.TabIndex = 2;
 			this.btnSaveBan.Text = "Save";
 			this.btnSaveBan.UseVisualStyleBackColor = true;
 			this.btnSaveBan.Click += new System.EventHandler(this.btnSaveBan_Click);
@@ -46,7 +46,7 @@
 			this.label2.Location = new System.Drawing.Point(12, 35);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(44, 13);
-			this.label2.TabIndex = 5;
+			this.label2.TabIndex = 0;
 			this.label2.Text = "Reason";
 			// 
 			// lblBanType
@@ -55,7 +55,7 @@
 			this.lblBanType.Location = new System.Drawing.Point(12, 9);
 			this.lblBanType.Name = "lblBanType";
 			this.lblBanType.Size = new System.Drawing.Size(50, 13);
-			this.lblBanType.TabIndex = 6;
+			this.lblBanType.TabIndex = 0;
 			this.lblBanType.Text = "BanType";
 			// 
 			// txtReason
@@ -64,7 +64,7 @@
 			this.txtReason.MaxLength = 200;
 			this.txtReason.Name = "txtReason";
 			this.txtReason.Size = new System.Drawing.Size(219, 20);
-			this.txtReason.TabIndex = 8;
+			this.txtReason.TabIndex = 1;
 			// 
 			// txtBanType
 			// 
@@ -72,7 +72,7 @@
 			this.txtBanType.MaxLength = 45;
 			this.txtBanType.Name = "txtBanType";
 			this.txtBanType.Size = new System.Drawing.Size(219, 20);
-			this.txtBanType.TabIndex = 7;
+			this.txtBanType.TabIndex = 0;
 			// 
 			// BannedPlayerEdit
 			// 

@@ -706,6 +706,8 @@
 			this.tipStarSettings.InitialDelay = 800;
 			this.tipStarSettings.IsBalloon = true;
 			this.tipStarSettings.ReshowDelay = 100;
+			this.tipStarSettings.UseAnimation = false;
+			this.tipStarSettings.UseFading = false;
 			// 
 			// btnAbout
 			// 
