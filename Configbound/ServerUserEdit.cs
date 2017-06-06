@@ -24,7 +24,7 @@ namespace Configbound {
 			string nameTrimmed = txtUsername.Text.Trim();
 			string passTrimmed = txtPassword.Text.Trim();
 
-			if (nameTrimmed == String.Empty | passTrimmed == String.Empty) {
+			if (nameTrimmed == String.Empty || passTrimmed == String.Empty) {
 				MessageBox.Show("Please enter both a name and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
@@ -64,7 +64,6 @@ namespace Configbound {
 					if (noUsers) {
 						string serverUsersJson = String.Format(@"
 						{{
-							""fullscreen"" : false,
 							""serverUsers"" : {{
 								""{0}"" : {{
 									""admin"" : {1},
@@ -75,7 +74,6 @@ namespace Configbound {
 						SettingsRoot newSettings = JsonConvert.DeserializeObject<SettingsRoot>(serverUsersJson);
 						Globals.StarboundSettings.serverUsers = newSettings.serverUsers;
 					} else {
-						System.Diagnostics.Debug.WriteLine(chkAdmin.Enabled.ToString().ToLower());
 						JObject userJson = JObject.Parse(String.Format(@"
 						{{
 							""admin"" : {0},

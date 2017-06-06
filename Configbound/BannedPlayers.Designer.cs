@@ -56,6 +56,7 @@
 			this.lstBannedIPs.TabIndex = 0;
 			this.lstBannedIPs.UseCompatibleStateImageBehavior = false;
 			this.lstBannedIPs.View = System.Windows.Forms.View.Details;
+			this.lstBannedIPs.SelectedIndexChanged += new System.EventHandler(this.BannedPlayers_SelectedIndexChanged);
 			// 
 			// colIPAddress
 			// 
@@ -82,6 +83,7 @@
 			this.lstBannedUUIDs.TabIndex = 1;
 			this.lstBannedUUIDs.UseCompatibleStateImageBehavior = false;
 			this.lstBannedUUIDs.View = System.Windows.Forms.View.Details;
+			this.lstBannedUUIDs.SelectedIndexChanged += new System.EventHandler(this.BannedPlayers_SelectedIndexChanged);
 			// 
 			// colUUID
 			// 
@@ -114,6 +116,7 @@
 			this.btnIPAdd.TabIndex = 1;
 			this.btnIPAdd.Text = "Add";
 			this.btnIPAdd.UseVisualStyleBackColor = true;
+			this.btnIPAdd.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
 			// btnIPEdit
 			// 
@@ -124,6 +127,7 @@
 			this.btnIPEdit.TabIndex = 2;
 			this.btnIPEdit.Text = "Edit";
 			this.btnIPEdit.UseVisualStyleBackColor = true;
+			this.btnIPEdit.Click += new System.EventHandler(this.btnEdit_Click);
 			// 
 			// btnIPRemove
 			// 
@@ -134,6 +138,7 @@
 			this.btnIPRemove.TabIndex = 4;
 			this.btnIPRemove.Text = "Remove";
 			this.btnIPRemove.UseVisualStyleBackColor = true;
+			this.btnIPRemove.Click += new System.EventHandler(this.btnRemove_Click);
 			// 
 			// flowLayoutPanel2
 			// 
@@ -156,6 +161,7 @@
 			this.btnUUIDAdd.TabIndex = 1;
 			this.btnUUIDAdd.Text = "Add";
 			this.btnUUIDAdd.UseVisualStyleBackColor = true;
+			this.btnUUIDAdd.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
 			// btnUUIDEdit
 			// 
@@ -166,6 +172,7 @@
 			this.btnUUIDEdit.TabIndex = 2;
 			this.btnUUIDEdit.Text = "Edit";
 			this.btnUUIDEdit.UseVisualStyleBackColor = true;
+			this.btnUUIDEdit.Click += new System.EventHandler(this.btnEdit_Click);
 			// 
 			// btnUUIDRemove
 			// 
@@ -176,6 +183,7 @@
 			this.btnUUIDRemove.TabIndex = 4;
 			this.btnUUIDRemove.Text = "Remove";
 			this.btnUUIDRemove.UseVisualStyleBackColor = true;
+			this.btnUUIDRemove.Click += new System.EventHandler(this.btnRemove_Click);
 			// 
 			// BannedPlayers
 			// 
@@ -193,6 +201,7 @@
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Banned Players";
+			this.Load += new System.EventHandler(this.BannedPlayers_Load);
 			this.flowLayoutPanel1.ResumeLayout(false);
 			this.flowLayoutPanel2.ResumeLayout(false);
 			this.ResumeLayout(false);

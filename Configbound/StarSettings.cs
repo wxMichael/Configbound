@@ -221,9 +221,8 @@ namespace Configbound {
 		public bool allowAnonymousConnections;
 		public bool anonymousConnectionsAreAdmin;
 		public SubSettings serverUsers;
-
-		//public static object bannedIPs { get; set; }
-		//public static object bannedUuids { get; set; }
+		public List<JToken> bannedIPs;
+		public List<JToken> bannedUuids;
 
 		// Wipe Game Data
 		public bool clearPlayerFiles;

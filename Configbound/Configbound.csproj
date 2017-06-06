@@ -97,6 +97,12 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="BannedPlayerEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BannedPlayerEdit.Designer.cs">
+      <DependentUpon>BannedPlayerEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="BannedPlayers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BannedPlayerEdit.resx">
+      <DependentUpon>BannedPlayerEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BannedPlayers.resx">
       <DependentUpon>BannedPlayers.cs</DependentUpon>

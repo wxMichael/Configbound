@@ -20,15 +20,11 @@ namespace Configbound {
 			// Hacky way to deselect ListView items; will fix it later ¯\_(ツ)_/¯
 			PopulateList();
 
-			ServerUserEdit frmServerUserEdit = new ServerUserEdit(false);
-			frmServerUserEdit.ShowDialog(this);
+			new ServerUserEdit(false).ShowDialog(this);
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e) {
-			if (SelectedUser != null) {
-				ServerUserEdit frmServerUserEdit = new ServerUserEdit(true);
-				frmServerUserEdit.ShowDialog(this);
-			}
+			if (SelectedUser != null) new ServerUserEdit(true).ShowDialog(this);
 		}
 
 		private void btnAdmin_Click(object sender, EventArgs e) {
@@ -65,7 +61,6 @@ namespace Configbound {
 			btnEdit.Enabled = btnAdmin.Enabled = btnRemove.Enabled = false;
 			lstServerUsers.Items.Clear();
 			if (Globals.StarboundSettings.serverUsers.additionalData != null) {
-			//if (Globals.StarboundSettings.serverUsers.additionalData.Count > 0) {
 				foreach (string userName in Globals.StarboundSettings.serverUsers.additionalData.Keys) {
 					dynamic user = Globals.StarboundSettings.serverUsers.additionalData[userName];
 
