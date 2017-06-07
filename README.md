@@ -3,6 +3,9 @@ A GUI for modifying starbound.config.
 
 ![](https://github.com/wxMichael/Configbound/blob/master/media/Configbound.png)
 
+## Download
+You can download Configbound from the [Releases page](https://github.com/wxMichael/Configbound/releases).
+
 ## Purpose
 This project is a way to get back into programming and brush up on my skills.
 Any feedback on the code is appreciated.
